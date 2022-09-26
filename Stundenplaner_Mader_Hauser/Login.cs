@@ -16,5 +16,12 @@ namespace Stundenplaner_Mader_Hauser
         {
             InitializeComponent();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            SQLConnection.TryConnectTODB();
+            //hides the Password
+            tB_login_password.PasswordChar = '*';
+        }
     }
 }
