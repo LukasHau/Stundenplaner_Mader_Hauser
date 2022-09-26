@@ -47,6 +47,7 @@
             this.tB_login_name.Name = "tB_login_name";
             this.tB_login_name.Size = new System.Drawing.Size(426, 47);
             this.tB_login_name.TabIndex = 0;
+            this.tB_login_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tB_login_name_KeyDown);
             // 
             // tB_login_password
             // 
@@ -58,6 +59,7 @@
             this.tB_login_password.Name = "tB_login_password";
             this.tB_login_password.Size = new System.Drawing.Size(426, 47);
             this.tB_login_password.TabIndex = 1;
+            this.tB_login_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tB_login_password_KeyDown);
             // 
             // cB_passwordChar
             // 
@@ -67,6 +69,7 @@
             this.cB_passwordChar.Size = new System.Drawing.Size(15, 14);
             this.cB_passwordChar.TabIndex = 2;
             this.cB_passwordChar.UseVisualStyleBackColor = true;
+            this.cB_passwordChar.CheckedChanged += new System.EventHandler(this.cB_passwordChar_CheckedChanged);
             // 
             // pB_Login
             // 
@@ -76,6 +79,7 @@
             this.pB_Login.Size = new System.Drawing.Size(426, 50);
             this.pB_Login.TabIndex = 3;
             this.pB_Login.TabStop = false;
+            this.pB_Login.Click += new System.EventHandler(this.pB_Login_Click);
             // 
             // pB_addUser
             // 
@@ -85,6 +89,7 @@
             this.pB_addUser.Size = new System.Drawing.Size(198, 26);
             this.pB_addUser.TabIndex = 4;
             this.pB_addUser.TabStop = false;
+            this.pB_addUser.Click += new System.EventHandler(this.pB_addUser_Click);
             // 
             // Login
             // 
