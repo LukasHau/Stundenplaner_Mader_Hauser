@@ -25,10 +25,11 @@ namespace Stundenplaner_Mader_Hauser
         }
 
         public static string userrole;
+        public static string username;
 
         private void pB_Login_Click(object sender, EventArgs e)
         {
-            string username = tB_login_name.Text;
+            username = tB_login_name.Text;
             string password = tB_login_password.Text;
 
             userrole = SQLConnection.checkRole(username);
@@ -38,9 +39,7 @@ namespace Stundenplaner_Mader_Hauser
             {
                 SQLConnection.choosen_username = username;
 
-
-
-                Main temp = new Main();
+                Main_admin temp = new Main_admin();
                 this.Hide();
 
                 temp.Show();
@@ -64,6 +63,11 @@ namespace Stundenplaner_Mader_Hauser
 
         private void pB_addUser_Click(object sender, EventArgs e)
         {
+            username = tB_login_name.Text;
+            string password = tB_login_password.Text;
+
+            SQLConnection.create_user(username, password);
+            
             //toDo Registration
         }
 
@@ -71,7 +75,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string username = tB_login_name.Text;
+                username = tB_login_name.Text;
                 string password = tB_login_password.Text;
 
                 userrole = SQLConnection.checkRole(username);
@@ -81,7 +85,7 @@ namespace Stundenplaner_Mader_Hauser
                 {
                     SQLConnection.choosen_username = username;
 
-                    Main temp = new Main();
+                    Main_admin temp = new Main_admin();
                     this.Hide();
 
                     temp.Show();
@@ -99,7 +103,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string username = tB_login_name.Text;
+                username = tB_login_name.Text;
                 string password = tB_login_password.Text;
 
                 userrole = SQLConnection.checkRole(username);
@@ -109,7 +113,7 @@ namespace Stundenplaner_Mader_Hauser
                 {
                     SQLConnection.choosen_username = username;
 
-                    Main temp = new Main();
+                    Main_admin temp = new Main_admin();
                     this.Hide();
 
                     temp.Show();

@@ -42,10 +42,10 @@
             this.tB_login_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tB_login_name.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tB_login_name.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tB_login_name.Location = new System.Drawing.Point(27, 113);
+            this.tB_login_name.Location = new System.Drawing.Point(27, 119);
             this.tB_login_name.Multiline = true;
             this.tB_login_name.Name = "tB_login_name";
-            this.tB_login_name.Size = new System.Drawing.Size(426, 47);
+            this.tB_login_name.Size = new System.Drawing.Size(426, 41);
             this.tB_login_name.TabIndex = 0;
             this.tB_login_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tB_login_name_KeyDown);
             // 
@@ -54,10 +54,10 @@
             this.tB_login_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tB_login_password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tB_login_password.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tB_login_password.Location = new System.Drawing.Point(27, 244);
+            this.tB_login_password.Location = new System.Drawing.Point(27, 249);
             this.tB_login_password.Multiline = true;
             this.tB_login_password.Name = "tB_login_password";
-            this.tB_login_password.Size = new System.Drawing.Size(426, 47);
+            this.tB_login_password.Size = new System.Drawing.Size(426, 41);
             this.tB_login_password.TabIndex = 1;
             this.tB_login_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tB_login_password_KeyDown);
             // 
