@@ -43,7 +43,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Stundenplaner_Mader_Hauser.Properties.Resources.MicrosoftTeams_image1;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(285, 87);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -52,7 +52,7 @@
             // 
             // btn_logout
             // 
-            this.btn_logout.Location = new System.Drawing.Point(211, 281);
+            this.btn_logout.Location = new System.Drawing.Point(211, 332);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(75, 23);
             this.btn_logout.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             // btn_timetalbe
             // 
-            this.btn_timetalbe.Location = new System.Drawing.Point(12, 93);
+            this.btn_timetalbe.Location = new System.Drawing.Point(12, 144);
             this.btn_timetalbe.Name = "btn_timetalbe";
             this.btn_timetalbe.Size = new System.Drawing.Size(105, 88);
             this.btn_timetalbe.TabIndex = 2;
@@ -72,24 +72,25 @@
             // lbl_wellcome
             // 
             this.lbl_wellcome.AutoSize = true;
-            this.lbl_wellcome.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_wellcome.Location = new System.Drawing.Point(21, 18);
+            this.lbl_wellcome.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_wellcome.Location = new System.Drawing.Point(12, 101);
             this.lbl_wellcome.Name = "lbl_wellcome";
-            this.lbl_wellcome.Size = new System.Drawing.Size(0, 32);
+            this.lbl_wellcome.Size = new System.Drawing.Size(0, 25);
             this.lbl_wellcome.TabIndex = 3;
             // 
             // btn_student
             // 
-            this.btn_student.Location = new System.Drawing.Point(125, 93);
+            this.btn_student.Location = new System.Drawing.Point(125, 144);
             this.btn_student.Name = "btn_student";
             this.btn_student.Size = new System.Drawing.Size(161, 41);
             this.btn_student.TabIndex = 4;
             this.btn_student.Text = "Schüler";
             this.btn_student.UseVisualStyleBackColor = true;
+            this.btn_student.Click += new System.EventHandler(this.btn_student_Click);
             // 
             // btn_teacher
             // 
-            this.btn_teacher.Location = new System.Drawing.Point(125, 140);
+            this.btn_teacher.Location = new System.Drawing.Point(125, 191);
             this.btn_teacher.Name = "btn_teacher";
             this.btn_teacher.Size = new System.Drawing.Size(161, 41);
             this.btn_teacher.TabIndex = 5;
@@ -98,7 +99,7 @@
             // 
             // btn_classes
             // 
-            this.btn_classes.Location = new System.Drawing.Point(125, 187);
+            this.btn_classes.Location = new System.Drawing.Point(125, 238);
             this.btn_classes.Name = "btn_classes";
             this.btn_classes.Size = new System.Drawing.Size(161, 41);
             this.btn_classes.TabIndex = 6;
@@ -107,7 +108,7 @@
             // 
             // btn_subjects
             // 
-            this.btn_subjects.Location = new System.Drawing.Point(125, 234);
+            this.btn_subjects.Location = new System.Drawing.Point(125, 285);
             this.btn_subjects.Name = "btn_subjects";
             this.btn_subjects.Size = new System.Drawing.Size(161, 41);
             this.btn_subjects.TabIndex = 7;
@@ -116,7 +117,7 @@
             // 
             // btn_createTimetable
             // 
-            this.btn_createTimetable.Location = new System.Drawing.Point(12, 187);
+            this.btn_createTimetable.Location = new System.Drawing.Point(12, 238);
             this.btn_createTimetable.Name = "btn_createTimetable";
             this.btn_createTimetable.Size = new System.Drawing.Size(107, 88);
             this.btn_createTimetable.TabIndex = 8;
@@ -127,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 314);
+            this.ClientSize = new System.Drawing.Size(300, 367);
             this.Controls.Add(this.btn_createTimetable);
             this.Controls.Add(this.btn_subjects);
             this.Controls.Add(this.btn_classes);

@@ -17,16 +17,21 @@ namespace Stundenplaner_Mader_Hauser
             InitializeComponent();
         }
 
-        
-
-        private void Schueler_Load(object sender, EventArgs e)
+        private void Schueler_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void btn_studentLoad_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_studentBack_Click(object sender, EventArgs e)
+        {
+            Main_admin temp = new Main_admin();
+            this.Close();
+            temp.Show();
         }
     }
 }
