@@ -219,6 +219,7 @@
             this.dG_student.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dG_student.Size = new System.Drawing.Size(298, 229);
             this.dG_student.TabIndex = 20;
+            this.dG_student.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_student_CellClick);
             this.dG_student.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_student_CellContentClick);
             // 
             // tb_searchDatabase

@@ -12,6 +12,7 @@ namespace Stundenplaner_Mader_Hauser
 {
     public partial class Schueler : Form
     {
+        private bool buttonStudentLoadWasClicked = false;
         public Schueler()
         {
             InitializeComponent();
@@ -24,7 +25,14 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_studentLoad_Click(object sender, EventArgs e)
         {
+            if (dG_student.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = dG_student.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedtRow = dG_student.Rows[selectedRowIndex];
+                string cellValue = Convert.ToString(selectedtRow.Cells["ID"].Value);
 
+                MessageBox.Show(cellValue);
+            }
         }
 
         private void btn_studentBack_Click(object sender, EventArgs e)
@@ -54,9 +62,14 @@ namespace Stundenplaner_Mader_Hauser
 
         private void tb_searchDatabase_TextChanged(object sender, EventArgs e)
         {
-            (dG_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%'", tb_searchDatabase.Text);
-            (dG_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("Id LIKE '{0}%'", tb_searchDatabase.Text);
-            (dG_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("surname LIKE '{0}%'", tb_searchDatabase.Text);
+            (dG_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%' OR surname LIKE '{0}%'", tb_searchDatabase.Text);
+        }
+
+        private void dG_student_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            
         }
     }
 }
