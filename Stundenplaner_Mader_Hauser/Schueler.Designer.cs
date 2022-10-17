@@ -46,10 +46,10 @@
             this.btn_studentLoad = new System.Windows.Forms.Button();
             this.lbl_email = new System.Windows.Forms.Label();
             this.tB_email = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dG_student = new System.Windows.Forms.DataGridView();
+            this.tb_searchDatabase = new System.Windows.Forms.TextBox();
             this.btn_search = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_student)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_studentName
@@ -156,7 +156,7 @@
             // 
             // btn_studentSave
             // 
-            this.btn_studentSave.Location = new System.Drawing.Point(541, 334);
+            this.btn_studentSave.Location = new System.Drawing.Point(584, 333);
             this.btn_studentSave.Name = "btn_studentSave";
             this.btn_studentSave.Size = new System.Drawing.Size(89, 28);
             this.btn_studentSave.TabIndex = 14;
@@ -165,16 +165,17 @@
             // 
             // btn_studentAdd
             // 
-            this.btn_studentAdd.Location = new System.Drawing.Point(446, 334);
+            this.btn_studentAdd.Location = new System.Drawing.Point(489, 333);
             this.btn_studentAdd.Name = "btn_studentAdd";
             this.btn_studentAdd.Size = new System.Drawing.Size(89, 28);
             this.btn_studentAdd.TabIndex = 15;
             this.btn_studentAdd.Text = "Hinzufügen";
             this.btn_studentAdd.UseVisualStyleBackColor = true;
+            this.btn_studentAdd.Click += new System.EventHandler(this.btn_studentAdd_Click);
             // 
             // btn_studentDelete
             // 
-            this.btn_studentDelete.Location = new System.Drawing.Point(541, 300);
+            this.btn_studentDelete.Location = new System.Drawing.Point(584, 299);
             this.btn_studentDelete.Name = "btn_studentDelete";
             this.btn_studentDelete.Size = new System.Drawing.Size(89, 28);
             this.btn_studentDelete.TabIndex = 16;
@@ -183,7 +184,7 @@
             // 
             // btn_studentLoad
             // 
-            this.btn_studentLoad.Location = new System.Drawing.Point(446, 300);
+            this.btn_studentLoad.Location = new System.Drawing.Point(489, 299);
             this.btn_studentLoad.Name = "btn_studentLoad";
             this.btn_studentLoad.Size = new System.Drawing.Size(89, 28);
             this.btn_studentLoad.TabIndex = 17;
@@ -207,25 +208,30 @@
             this.tB_email.Size = new System.Drawing.Size(216, 23);
             this.tB_email.TabIndex = 19;
             // 
-            // dataGridView1
+            // dG_student
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(375, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(255, 229);
-            this.dataGridView1.TabIndex = 20;
+            this.dG_student.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dG_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dG_student.Location = new System.Drawing.Point(375, 48);
+            this.dG_student.Name = "dG_student";
+            this.dG_student.ReadOnly = true;
+            this.dG_student.RowTemplate.Height = 25;
+            this.dG_student.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.dG_student.Size = new System.Drawing.Size(298, 229);
+            this.dG_student.TabIndex = 20;
+            this.dG_student.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_student_CellContentClick);
             // 
-            // textBox1
+            // tb_searchDatabase
             // 
-            this.textBox1.Location = new System.Drawing.Point(375, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 23);
-            this.textBox1.TabIndex = 21;
+            this.tb_searchDatabase.Location = new System.Drawing.Point(375, 18);
+            this.tb_searchDatabase.Name = "tb_searchDatabase";
+            this.tb_searchDatabase.Size = new System.Drawing.Size(203, 23);
+            this.tb_searchDatabase.TabIndex = 21;
+            this.tb_searchDatabase.TextChanged += new System.EventHandler(this.tb_searchDatabase_TextChanged);
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(541, 15);
+            this.btn_search.Location = new System.Drawing.Point(584, 14);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(89, 28);
             this.btn_search.TabIndex = 22;
@@ -234,10 +240,10 @@
             // 
             // Schueler
             // 
-            this.ClientSize = new System.Drawing.Size(642, 368);
+            this.ClientSize = new System.Drawing.Size(685, 368);
             this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tb_searchDatabase);
+            this.Controls.Add(this.dG_student);
             this.Controls.Add(this.tB_email);
             this.Controls.Add(this.lbl_email);
             this.Controls.Add(this.btn_studentLoad);
@@ -258,7 +264,7 @@
             this.Controls.Add(this.lbl_studentName);
             this.Name = "Schueler";
             this.Load += new System.EventHandler(this.Schueler_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_student)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,8 +291,8 @@
         private Button btn_studentLoad;
         private Label lbl_email;
         private TextBox tB_email;
-        private DataGridView dataGridView1;
-        private TextBox textBox1;
+        private DataGridView dG_student;
+        private TextBox tb_searchDatabase;
         private Button btn_search;
     }
 }

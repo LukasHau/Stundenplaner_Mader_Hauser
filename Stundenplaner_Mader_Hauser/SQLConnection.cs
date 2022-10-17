@@ -74,23 +74,6 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        //Before the User connects to a Database, the program double checks the connection to the Database
-        public static bool TryConnection()
-        {
-            try
-            {
-                con.Open();
-                con.Close();
-                return true;
-            }
-
-            catch (Exception e)
-            {
-                MessageBox.Show("Test at TryConnection\n" + e.Message);
-                return false;
-            }
-        }
-
         public static void TryConnectTODB()
         {
             try
@@ -108,6 +91,9 @@ namespace Stundenplaner_Mader_Hauser
 
                 con.Open();
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_login') CREATE TABLE swp5_login ([Id] INT IDENTITY (1, 1) NOT NULL, [username] VARCHAR(50) NULL,[password] VARCHAR(200) NULL, [role] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_student') CREATE TABLE swp5_student ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, [school_class] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -214,24 +200,7 @@ namespace Stundenplaner_Mader_Hauser
 
         #region DataGridView
 
-        public static DataTable LoadDataInDG()
-        {
-            //clears the DataTable
-            dt.Clear();
-            //shows the data in the DataGrid
-            try
-            {
-                cmd = new SqlCommand("SELECT * FROM swp5_login", con);
-                adp.SelectCommand = cmd;
-                adp.Fill(dt);
-                return dt;
-            }
-            catch
-            {
-                MessageBox.Show("Ein Fehler ist aufgetreten!");
-                return dt;
-            }
-        }
+       
 
         public static void SaveDG()
         {
