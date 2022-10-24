@@ -41,7 +41,6 @@
             this.cb_studentAdd = new System.Windows.Forms.CheckBox();
             this.btn_studentBack = new System.Windows.Forms.Button();
             this.btn_studentSave = new System.Windows.Forms.Button();
-            this.btn_studentAdd = new System.Windows.Forms.Button();
             this.btn_studentDelete = new System.Windows.Forms.Button();
             this.btn_studentLoad = new System.Windows.Forms.Button();
             this.lbl_email = new System.Windows.Forms.Label();
@@ -143,10 +142,11 @@
             this.cb_studentAdd.Text = "Neuen Schüler hinzufügen";
             this.cb_studentAdd.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.cb_studentAdd.UseVisualStyleBackColor = true;
+            this.cb_studentAdd.CheckedChanged += new System.EventHandler(this.cb_studentAdd_CheckedChanged);
             // 
             // btn_studentBack
             // 
-            this.btn_studentBack.Location = new System.Drawing.Point(9, 334);
+            this.btn_studentBack.Location = new System.Drawing.Point(9, 294);
             this.btn_studentBack.Name = "btn_studentBack";
             this.btn_studentBack.Size = new System.Drawing.Size(89, 28);
             this.btn_studentBack.TabIndex = 13;
@@ -156,35 +156,27 @@
             // 
             // btn_studentSave
             // 
-            this.btn_studentSave.Location = new System.Drawing.Point(584, 333);
+            this.btn_studentSave.Location = new System.Drawing.Point(584, 294);
             this.btn_studentSave.Name = "btn_studentSave";
             this.btn_studentSave.Size = new System.Drawing.Size(89, 28);
             this.btn_studentSave.TabIndex = 14;
             this.btn_studentSave.Text = "Speichern";
             this.btn_studentSave.UseVisualStyleBackColor = true;
-            // 
-            // btn_studentAdd
-            // 
-            this.btn_studentAdd.Location = new System.Drawing.Point(489, 333);
-            this.btn_studentAdd.Name = "btn_studentAdd";
-            this.btn_studentAdd.Size = new System.Drawing.Size(89, 28);
-            this.btn_studentAdd.TabIndex = 15;
-            this.btn_studentAdd.Text = "Hinzufügen";
-            this.btn_studentAdd.UseVisualStyleBackColor = true;
-            this.btn_studentAdd.Click += new System.EventHandler(this.btn_studentAdd_Click);
+            this.btn_studentSave.Click += new System.EventHandler(this.btn_studentSave_Click);
             // 
             // btn_studentDelete
             // 
-            this.btn_studentDelete.Location = new System.Drawing.Point(584, 299);
+            this.btn_studentDelete.Location = new System.Drawing.Point(489, 294);
             this.btn_studentDelete.Name = "btn_studentDelete";
             this.btn_studentDelete.Size = new System.Drawing.Size(89, 28);
             this.btn_studentDelete.TabIndex = 16;
             this.btn_studentDelete.Text = "Löschen";
             this.btn_studentDelete.UseVisualStyleBackColor = true;
+            this.btn_studentDelete.Click += new System.EventHandler(this.btn_studentDelete_Click);
             // 
             // btn_studentLoad
             // 
-            this.btn_studentLoad.Location = new System.Drawing.Point(489, 299);
+            this.btn_studentLoad.Location = new System.Drawing.Point(394, 294);
             this.btn_studentLoad.Name = "btn_studentLoad";
             this.btn_studentLoad.Size = new System.Drawing.Size(89, 28);
             this.btn_studentLoad.TabIndex = 17;
@@ -241,7 +233,7 @@
             // 
             // Schueler
             // 
-            this.ClientSize = new System.Drawing.Size(685, 368);
+            this.ClientSize = new System.Drawing.Size(685, 334);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.tb_searchDatabase);
             this.Controls.Add(this.dG_student);
@@ -249,7 +241,6 @@
             this.Controls.Add(this.lbl_email);
             this.Controls.Add(this.btn_studentLoad);
             this.Controls.Add(this.btn_studentDelete);
-            this.Controls.Add(this.btn_studentAdd);
             this.Controls.Add(this.btn_studentSave);
             this.Controls.Add(this.btn_studentBack);
             this.Controls.Add(this.cb_studentAdd);
@@ -287,7 +278,6 @@
         private CheckBox cb_studentAdd;
         private Button btn_studentBack;
         private Button btn_studentSave;
-        private Button btn_studentAdd;
         private Button btn_studentDelete;
         private Button btn_studentLoad;
         private Label lbl_email;
