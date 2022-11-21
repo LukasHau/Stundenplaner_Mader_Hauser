@@ -96,6 +96,7 @@
             this.btn_teacher.TabIndex = 5;
             this.btn_teacher.Text = "Lehrpersonen";
             this.btn_teacher.UseVisualStyleBackColor = true;
+            this.btn_teacher.Click += new System.EventHandler(this.btn_teacher_Click);
             // 
             // btn_classes
             // 

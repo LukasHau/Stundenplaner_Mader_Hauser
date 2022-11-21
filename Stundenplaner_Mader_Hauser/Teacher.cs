@@ -8,30 +8,28 @@ using System.Data.SqlClient;
 
 namespace Stundenplaner_Mader_Hauser
 {
-    internal class Student : SQLConnection
+    internal class Teacher : SQLConnection
     {
-
         public static DataTable dt = new DataTable();
         private static SqlDataAdapter adp = new SqlDataAdapter();
 
         #region Variables
-        public static string StudentName;
-        public static string StudentSurname;
-        public static string StudentBirth;
-        public static string StudentAdress;
-        public static string StudentEmail;
-        public static int StudentID_login;
-        public static string StudentSchool_class;
+        public static string TeacherName;
+        public static string TeacherSurname;
+        public static string TeacherBirth;
+        public static string TeacherAdress;
+        public static string TeacherEmail;
+        public static int TeacherID_login;
         #endregion
 
-        public static void CreateStudent(string name, string surname, DateTime birth, string adress, string email, int ID_login, string school_class)
+        public static void CreateTeacher(string name, string surname, DateTime birth, string adress, string email, int ID_login)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("INSERT INTO swp5_student(name, surname, birth, adress, email, ID_login, school_class) VALUES('" + name + "', '" +
-                    surname + "', '" + birth.ToString() + "', '" + adress + "', '" + email + "', '" + ID_login + "', '" + school_class + "');");
+                cmd.CommandText = ("INSERT INTO swp5_teacher(name, surname, birth, adress, email, ID_login) VALUES('" + name + "', '" +
+                    surname + "', '" + birth.ToString() + "', '" + adress + "', '" + email + "', '" + ID_login + "');");
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -43,7 +41,7 @@ namespace Stundenplaner_Mader_Hauser
                 con.Close();
                 MessageBox.Show(e.ToString());
             }
-            
+
         }
 
         public static DataTable LoadDG()
@@ -53,7 +51,7 @@ namespace Stundenplaner_Mader_Hauser
             //shows the data in the DataGrid
             try
             {
-                cmd = new SqlCommand("SELECT Id, name, surname FROM swp5_student", con);
+                cmd = new SqlCommand("SELECT Id, name, surname FROM swp5_teacher", con);
                 adp.SelectCommand = cmd;
                 adp.Fill(dt);
                 return dt;
@@ -65,43 +63,41 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        public static void LoadStudent(int id)
+        public static void LoadTeacher(int id)
         {
             try
             {
                 con.Open();
-                cmd.CommandText = ("SELECT name FROM swp5_student WHERE ID = '" + id + "';");
-                StudentName = (string)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT surname FROM swp5_student WHERE ID = '" + id + "';");
-                StudentSurname = (string)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT birth FROM swp5_student WHERE ID = '" + id + "';");
-                StudentBirth = (string)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT adress FROM swp5_student WHERE ID = '" + id + "';");
-                StudentAdress = (string)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT email FROM swp5_student WHERE ID = '" + id + "';");
-                StudentEmail = (string)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT ID_login FROM swp5_student WHERE ID = '" + id + "';");
-                StudentID_login = (int)cmd.ExecuteScalar();
-                cmd.CommandText = ("SELECT school_class FROM swp5_student WHERE ID = '" + id + "';");
-                StudentSchool_class = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT name FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherName = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT surname FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherSurname = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT birth FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherBirth = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT adress FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherAdress = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT email FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherEmail = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT ID_login FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherID_login = (int)cmd.ExecuteScalar();
                 con.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 con.Close();
                 MessageBox.Show(e.ToString());
             }
         }
 
-        public static void DeleteStudent(int id)
+        public static void DeleteTeacher(int id)
         {
             try
             {
                 con.Open();
-                cmd.CommandText = ("SELECT name FROM swp5_student WHERE ID = '" + id + "';");
+                cmd.CommandText = ("SELECT name FROM swp5_teacher WHERE ID = '" + id + "';");
                 string tempName = (string)cmd.ExecuteScalar();
 
-                cmd.CommandText = ("SELECT surname FROM swp5_student WHERE ID = '" + id + "';");
+                cmd.CommandText = ("SELECT surname FROM swp5_teacher WHERE ID = '" + id + "';");
                 string tempSurname = (string)cmd.ExecuteScalar();
                 con.Close();
 
@@ -111,7 +107,7 @@ namespace Stundenplaner_Mader_Hauser
                 {
                     con.Open();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = ("DELETE FROM swp5_student WHERE ID = '" + id + "';");
+                    cmd.CommandText = ("DELETE FROM swp5_teacher WHERE ID = '" + id + "';");
                     cmd.ExecuteNonQuery();
                     con.Close();
 
@@ -119,8 +115,8 @@ namespace Stundenplaner_Mader_Hauser
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    
-                }                
+
+                }
             }
             catch (Exception e)
             {
@@ -129,23 +125,23 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        public static void updateStudent(int id, string name, string surname, DateTime birth, string adress, string email)
+        public static void updateTeacher(int id, string name, string surname, DateTime birth, string adress, string email)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("UPDATE swp5_student set name = '" + name + "', surname = '" + surname + "', birth = '" + birth.ToString() + "', adress = '" + adress + "', email = '" + email + "' where ID = '" + id + "';");
+                cmd.CommandText = ("UPDATE swp5_teacher set name = '" + name + "', surname = '" + surname + "', birth = '" + birth.ToString() + "', adress = '" + adress + "', email = '" + email + "' where ID = '" + id + "';");
                 cmd.ExecuteNonQuery();
                 con.Close();
 
                 MessageBox.Show(name + " " + surname + " wurde bearbeitet!");
-                
+
             }
             catch (Exception e)
             {
                 con.Close();
-                MessageBox.Show (e.ToString());
+                MessageBox.Show(e.ToString());
             }
         }
     }

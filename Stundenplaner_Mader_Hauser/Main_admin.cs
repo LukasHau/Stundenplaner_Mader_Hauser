@@ -35,5 +35,12 @@ namespace Stundenplaner_Mader_Hauser
             this.Close();
             temp.Show();
         }
+
+        private void btn_teacher_Click(object sender, EventArgs e)
+        {
+            Lehrer temp = new Lehrer();
+            this.Close();
+            temp.Show();
+        }
     }
 }

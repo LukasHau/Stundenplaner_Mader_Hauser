@@ -55,10 +55,7 @@ namespace Stundenplaner_Mader_Hauser
                     dtp_studentBirth.Value = Convert.ToDateTime(Student.StudentBirth);
                     tB_email.Text = Student.StudentEmail;
                     tb_studentAdress.Text = Student.StudentAdress;
-                    tb_studentClass.Text = Student.StudentSchool_class;
-
-
-                  
+                    tb_studentClass.Text = Student.StudentSchool_class;        
                 }
             }     
         }
@@ -82,9 +79,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void dG_student_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-            
+               
         }
 
         private void clear()
@@ -106,6 +101,7 @@ namespace Stundenplaner_Mader_Hauser
                 btn_studentLoad.Text = "Hinzufügen";
                 btn_studentDelete.Enabled = false;
                 btn_studentSave.Enabled = false;
+                clear();
             }
             else
             {
@@ -136,6 +132,5 @@ namespace Stundenplaner_Mader_Hauser
             Student.updateStudent(studentID, tb_studentName.Text, tb_studentSurname.Text, dtp_studentBirth.Value.Date, tb_studentAdress.Text, tB_email.Text);
             clear();
         }
-
     }
 }
