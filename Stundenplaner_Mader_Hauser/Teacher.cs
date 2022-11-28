@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Stundenplaner_Mader_Hauser
 {
-    internal class Teacher : SQLConnection
+    class Teacher : SQLConnection
     {
         public static DataTable dt = new DataTable();
         private static SqlDataAdapter adp = new SqlDataAdapter();

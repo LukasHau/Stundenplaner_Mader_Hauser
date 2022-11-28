@@ -64,6 +64,7 @@
             this.tb_teacherSearchDatabase.Name = "tb_teacherSearchDatabase";
             this.tb_teacherSearchDatabase.Size = new System.Drawing.Size(203, 23);
             this.tb_teacherSearchDatabase.TabIndex = 41;
+            this.tb_teacherSearchDatabase.TextChanged += new System.EventHandler(this.tb_teacherSearchDatabase_TextChanged);
             // 
             // dG_teacher
             // 
@@ -101,6 +102,7 @@
             this.btn_teacherLoad.TabIndex = 37;
             this.btn_teacherLoad.Text = "Laden";
             this.btn_teacherLoad.UseVisualStyleBackColor = true;
+            this.btn_teacherLoad.Click += new System.EventHandler(this.btn_teacherLoad_Click);
             // 
             // btn_teacherDelete
             // 
@@ -110,6 +112,7 @@
             this.btn_teacherDelete.TabIndex = 36;
             this.btn_teacherDelete.Text = "Löschen";
             this.btn_teacherDelete.UseVisualStyleBackColor = true;
+            this.btn_teacherDelete.Click += new System.EventHandler(this.btn_teacherDelete_Click);
             // 
             // btn_teacherSave
             // 
@@ -119,6 +122,7 @@
             this.btn_teacherSave.TabIndex = 35;
             this.btn_teacherSave.Text = "Speichern";
             this.btn_teacherSave.UseVisualStyleBackColor = true;
+            this.btn_teacherSave.Click += new System.EventHandler(this.btn_teacherSave_Click);
             // 
             // btn_teacherBack
             // 
@@ -128,6 +132,7 @@
             this.btn_teacherBack.TabIndex = 34;
             this.btn_teacherBack.Text = "Zurück";
             this.btn_teacherBack.UseVisualStyleBackColor = true;
+            this.btn_teacherBack.Click += new System.EventHandler(this.btn_teacherBack_Click);
             // 
             // cb_teacherAdd
             // 
@@ -139,6 +144,7 @@
             this.cb_teacherAdd.Text = "Neuen Lehrer hinzufügen";
             this.cb_teacherAdd.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.cb_teacherAdd.UseVisualStyleBackColor = true;
+            this.cb_teacherAdd.CheckedChanged += new System.EventHandler(this.cb_teacherAdd_CheckedChanged);
             // 
             // dtp_teacherBirth
             // 
@@ -230,6 +236,7 @@
             this.Controls.Add(this.lbl_teacherName);
             this.Name = "Lehrer";
             this.Text = "Lehrer";
+            this.Load += new System.EventHandler(this.Lehrer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dG_teacher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
