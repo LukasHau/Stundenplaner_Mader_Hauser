@@ -74,7 +74,8 @@ namespace Stundenplaner_Mader_Hauser
 
         private void tb_searchDatabase_TextChanged(object sender, EventArgs e)
         {
-            (dG_student.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%' OR surname LIKE '{0}%'", tb_searchDatabase.Text);
+            (dG_student.DataSource as DataTable).DefaultView.RowFilter = 
+                string.Format("name LIKE '{0}%' OR surname LIKE '{0}%'", tb_searchDatabase.Text);
         }
 
         private void dG_student_CellClick(object sender, DataGridViewCellEventArgs e)

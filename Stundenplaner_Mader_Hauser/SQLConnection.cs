@@ -71,10 +71,13 @@ namespace Stundenplaner_Mader_Hauser
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_teacher') CREATE TABLE swp5_teacher ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject') CREATE TABLE swp5_subject ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [exam] BIT, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject') CREATE TABLE swp5_subject ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [exam] INT, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject_teacher') CREATE TABLE swp5_subject_teacher ([Id] INT IDENTITY (1, 1) NOT NULL, [ID_teacher] INT NULL, [ID_subject] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_class') CREATE TABLE swp5_class ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [room] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
                 con.Close();
 

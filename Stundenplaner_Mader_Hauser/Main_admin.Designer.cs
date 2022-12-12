@@ -106,6 +106,7 @@
             this.btn_classes.TabIndex = 6;
             this.btn_classes.Text = "Klassen";
             this.btn_classes.UseVisualStyleBackColor = true;
+            this.btn_classes.Click += new System.EventHandler(this.btn_classes_Click);
             // 
             // btn_subjects
             // 
@@ -115,6 +116,7 @@
             this.btn_subjects.TabIndex = 7;
             this.btn_subjects.Text = "Fächer";
             this.btn_subjects.UseVisualStyleBackColor = true;
+            this.btn_subjects.Click += new System.EventHandler(this.btn_subjects_Click);
             // 
             // btn_createTimetable
             // 
