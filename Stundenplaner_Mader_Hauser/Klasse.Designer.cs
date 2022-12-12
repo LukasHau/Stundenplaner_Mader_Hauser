@@ -74,6 +74,7 @@
             this.tb_classSearchDatabase.Name = "tb_classSearchDatabase";
             this.tb_classSearchDatabase.Size = new System.Drawing.Size(203, 23);
             this.tb_classSearchDatabase.TabIndex = 73;
+            this.tb_classSearchDatabase.TextChanged += new System.EventHandler(this.tb_classSearchDatabase_TextChanged);
             // 
             // dG_class
             // 

@@ -101,5 +101,10 @@ namespace Stundenplaner_Mader_Hauser
             this.Close();
             temp.Show();
         }
+
+        private void tb_classSearchDatabase_TextChanged(object sender, EventArgs e)
+        {
+            (dG_class.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%'", tb_classSearchDatabase.Text);
+        }
     }
 }
