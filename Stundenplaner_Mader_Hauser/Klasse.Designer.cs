@@ -30,7 +30,6 @@
         {
             this.tb_classRoom = new System.Windows.Forms.TextBox();
             this.lbl_classRoom = new System.Windows.Forms.Label();
-            this.btn_classSearch = new System.Windows.Forms.Button();
             this.tb_classSearchDatabase = new System.Windows.Forms.TextBox();
             this.dG_class = new System.Windows.Forms.DataGridView();
             this.btn_classLoad = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
             this.cb_classAdd = new System.Windows.Forms.CheckBox();
             this.tb_className = new System.Windows.Forms.TextBox();
             this.lbl_className = new System.Windows.Forms.Label();
+            this.lbl_search = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dG_class)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,20 +59,11 @@
             this.lbl_classRoom.TabIndex = 76;
             this.lbl_classRoom.Text = "Raum:";
             // 
-            // btn_classSearch
-            // 
-            this.btn_classSearch.Location = new System.Drawing.Point(218, 127);
-            this.btn_classSearch.Name = "btn_classSearch";
-            this.btn_classSearch.Size = new System.Drawing.Size(89, 28);
-            this.btn_classSearch.TabIndex = 74;
-            this.btn_classSearch.Text = "Suchen";
-            this.btn_classSearch.UseVisualStyleBackColor = true;
-            // 
             // tb_classSearchDatabase
             // 
-            this.tb_classSearchDatabase.Location = new System.Drawing.Point(9, 131);
+            this.tb_classSearchDatabase.Location = new System.Drawing.Point(61, 132);
             this.tb_classSearchDatabase.Name = "tb_classSearchDatabase";
-            this.tb_classSearchDatabase.Size = new System.Drawing.Size(203, 23);
+            this.tb_classSearchDatabase.Size = new System.Drawing.Size(247, 23);
             this.tb_classSearchDatabase.TabIndex = 73;
             this.tb_classSearchDatabase.TextChanged += new System.EventHandler(this.tb_classSearchDatabase_TextChanged);
             // 
@@ -156,14 +147,23 @@
             this.lbl_className.TabIndex = 64;
             this.lbl_className.Text = "Name:";
             // 
+            // lbl_search
+            // 
+            this.lbl_search.AutoSize = true;
+            this.lbl_search.Location = new System.Drawing.Point(9, 135);
+            this.lbl_search.Name = "lbl_search";
+            this.lbl_search.Size = new System.Drawing.Size(49, 15);
+            this.lbl_search.TabIndex = 78;
+            this.lbl_search.Text = "Suchen:";
+            // 
             // Klasse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 433);
+            this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.tb_classRoom);
             this.Controls.Add(this.lbl_classRoom);
-            this.Controls.Add(this.btn_classSearch);
             this.Controls.Add(this.tb_classSearchDatabase);
             this.Controls.Add(this.dG_class);
             this.Controls.Add(this.btn_classLoad);
@@ -186,7 +186,6 @@
 
         private TextBox tb_classRoom;
         private Label lbl_classRoom;
-        private Button btn_classSearch;
         private TextBox tb_classSearchDatabase;
         private DataGridView dG_class;
         private Button btn_classLoad;
@@ -196,5 +195,6 @@
         private CheckBox cb_classAdd;
         private TextBox tb_className;
         private Label lbl_className;
+        private Label lbl_search;
     }
 }

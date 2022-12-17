@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_teacherSearch = new System.Windows.Forms.Button();
             this.tb_teacherSearchDatabase = new System.Windows.Forms.TextBox();
             this.dG_teacher = new System.Windows.Forms.DataGridView();
             this.tB_teacherEmail = new System.Windows.Forms.TextBox();
@@ -46,23 +45,18 @@
             this.lbl_teacherAdress = new System.Windows.Forms.Label();
             this.lbl_teacherSurname = new System.Windows.Forms.Label();
             this.lbl_teacherName = new System.Windows.Forms.Label();
+            this.cB_sex = new System.Windows.Forms.ComboBox();
+            this.lbl_sex = new System.Windows.Forms.Label();
+            this.cLBTeacher = new System.Windows.Forms.CheckedListBox();
+            this.lbl_search = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dG_teacher)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_teacherSearch
-            // 
-            this.btn_teacherSearch.Location = new System.Drawing.Point(585, 14);
-            this.btn_teacherSearch.Name = "btn_teacherSearch";
-            this.btn_teacherSearch.Size = new System.Drawing.Size(89, 28);
-            this.btn_teacherSearch.TabIndex = 42;
-            this.btn_teacherSearch.Text = "Suchen";
-            this.btn_teacherSearch.UseVisualStyleBackColor = true;
-            // 
             // tb_teacherSearchDatabase
             // 
-            this.tb_teacherSearchDatabase.Location = new System.Drawing.Point(376, 18);
+            this.tb_teacherSearchDatabase.Location = new System.Drawing.Point(665, 19);
             this.tb_teacherSearchDatabase.Name = "tb_teacherSearchDatabase";
-            this.tb_teacherSearchDatabase.Size = new System.Drawing.Size(203, 23);
+            this.tb_teacherSearchDatabase.Size = new System.Drawing.Size(243, 23);
             this.tb_teacherSearchDatabase.TabIndex = 41;
             this.tb_teacherSearchDatabase.TextChanged += new System.EventHandler(this.tb_teacherSearchDatabase_TextChanged);
             // 
@@ -70,7 +64,7 @@
             // 
             this.dG_teacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dG_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dG_teacher.Location = new System.Drawing.Point(376, 48);
+            this.dG_teacher.Location = new System.Drawing.Point(610, 48);
             this.dG_teacher.Name = "dG_teacher";
             this.dG_teacher.ReadOnly = true;
             this.dG_teacher.RowTemplate.Height = 25;
@@ -80,7 +74,7 @@
             // 
             // tB_teacherEmail
             // 
-            this.tB_teacherEmail.Location = new System.Drawing.Point(106, 145);
+            this.tB_teacherEmail.Location = new System.Drawing.Point(106, 174);
             this.tB_teacherEmail.Name = "tB_teacherEmail";
             this.tB_teacherEmail.Size = new System.Drawing.Size(216, 23);
             this.tB_teacherEmail.TabIndex = 39;
@@ -88,7 +82,7 @@
             // lbl_teacherEmail
             // 
             this.lbl_teacherEmail.AutoSize = true;
-            this.lbl_teacherEmail.Location = new System.Drawing.Point(13, 148);
+            this.lbl_teacherEmail.Location = new System.Drawing.Point(13, 177);
             this.lbl_teacherEmail.Name = "lbl_teacherEmail";
             this.lbl_teacherEmail.Size = new System.Drawing.Size(44, 15);
             this.lbl_teacherEmail.TabIndex = 38;
@@ -96,7 +90,7 @@
             // 
             // btn_teacherLoad
             // 
-            this.btn_teacherLoad.Location = new System.Drawing.Point(395, 294);
+            this.btn_teacherLoad.Location = new System.Drawing.Point(629, 294);
             this.btn_teacherLoad.Name = "btn_teacherLoad";
             this.btn_teacherLoad.Size = new System.Drawing.Size(89, 28);
             this.btn_teacherLoad.TabIndex = 37;
@@ -106,7 +100,7 @@
             // 
             // btn_teacherDelete
             // 
-            this.btn_teacherDelete.Location = new System.Drawing.Point(490, 294);
+            this.btn_teacherDelete.Location = new System.Drawing.Point(724, 294);
             this.btn_teacherDelete.Name = "btn_teacherDelete";
             this.btn_teacherDelete.Size = new System.Drawing.Size(89, 28);
             this.btn_teacherDelete.TabIndex = 36;
@@ -116,7 +110,7 @@
             // 
             // btn_teacherSave
             // 
-            this.btn_teacherSave.Location = new System.Drawing.Point(585, 294);
+            this.btn_teacherSave.Location = new System.Drawing.Point(819, 294);
             this.btn_teacherSave.Name = "btn_teacherSave";
             this.btn_teacherSave.Size = new System.Drawing.Size(89, 28);
             this.btn_teacherSave.TabIndex = 35;
@@ -148,14 +142,14 @@
             // 
             // dtp_teacherBirth
             // 
-            this.dtp_teacherBirth.Location = new System.Drawing.Point(106, 113);
+            this.dtp_teacherBirth.Location = new System.Drawing.Point(106, 142);
             this.dtp_teacherBirth.Name = "dtp_teacherBirth";
             this.dtp_teacherBirth.Size = new System.Drawing.Size(216, 23);
             this.dtp_teacherBirth.TabIndex = 32;
             // 
             // tb_teacherAdress
             // 
-            this.tb_teacherAdress.Location = new System.Drawing.Point(106, 174);
+            this.tb_teacherAdress.Location = new System.Drawing.Point(106, 203);
             this.tb_teacherAdress.Multiline = true;
             this.tb_teacherAdress.Name = "tb_teacherAdress";
             this.tb_teacherAdress.Size = new System.Drawing.Size(216, 74);
@@ -178,7 +172,7 @@
             // lbl_teacherBirth
             // 
             this.lbl_teacherBirth.AutoSize = true;
-            this.lbl_teacherBirth.Location = new System.Drawing.Point(10, 119);
+            this.lbl_teacherBirth.Location = new System.Drawing.Point(10, 148);
             this.lbl_teacherBirth.Name = "lbl_teacherBirth";
             this.lbl_teacherBirth.Size = new System.Drawing.Size(86, 15);
             this.lbl_teacherBirth.TabIndex = 26;
@@ -187,7 +181,7 @@
             // lbl_teacherAdress
             // 
             this.lbl_teacherAdress.AutoSize = true;
-            this.lbl_teacherAdress.Location = new System.Drawing.Point(13, 177);
+            this.lbl_teacherAdress.Location = new System.Drawing.Point(13, 206);
             this.lbl_teacherAdress.Name = "lbl_teacherAdress";
             this.lbl_teacherAdress.Size = new System.Drawing.Size(51, 15);
             this.lbl_teacherAdress.TabIndex = 25;
@@ -211,12 +205,52 @@
             this.lbl_teacherName.TabIndex = 23;
             this.lbl_teacherName.Text = "Name:";
             // 
+            // cB_sex
+            // 
+            this.cB_sex.FormattingEnabled = true;
+            this.cB_sex.Items.AddRange(new object[] {
+            "m",
+            "w"});
+            this.cB_sex.Location = new System.Drawing.Point(106, 113);
+            this.cB_sex.Name = "cB_sex";
+            this.cB_sex.Size = new System.Drawing.Size(73, 23);
+            this.cB_sex.TabIndex = 44;
+            // 
+            // lbl_sex
+            // 
+            this.lbl_sex.AutoSize = true;
+            this.lbl_sex.Location = new System.Drawing.Point(10, 116);
+            this.lbl_sex.Name = "lbl_sex";
+            this.lbl_sex.Size = new System.Drawing.Size(68, 15);
+            this.lbl_sex.TabIndex = 43;
+            this.lbl_sex.Text = "Geschlecht:";
+            // 
+            // cLBTeacher
+            // 
+            this.cLBTeacher.FormattingEnabled = true;
+            this.cLBTeacher.Location = new System.Drawing.Point(348, 12);
+            this.cLBTeacher.Name = "cLBTeacher";
+            this.cLBTeacher.Size = new System.Drawing.Size(230, 310);
+            this.cLBTeacher.TabIndex = 45;
+            // 
+            // lbl_search
+            // 
+            this.lbl_search.AutoSize = true;
+            this.lbl_search.Location = new System.Drawing.Point(610, 22);
+            this.lbl_search.Name = "lbl_search";
+            this.lbl_search.Size = new System.Drawing.Size(49, 15);
+            this.lbl_search.TabIndex = 46;
+            this.lbl_search.Text = "Suchen:";
+            // 
             // Lehrer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 334);
-            this.Controls.Add(this.btn_teacherSearch);
+            this.ClientSize = new System.Drawing.Size(919, 334);
+            this.Controls.Add(this.lbl_search);
+            this.Controls.Add(this.cLBTeacher);
+            this.Controls.Add(this.cB_sex);
+            this.Controls.Add(this.lbl_sex);
             this.Controls.Add(this.tb_teacherSearchDatabase);
             this.Controls.Add(this.dG_teacher);
             this.Controls.Add(this.tB_teacherEmail);
@@ -244,8 +278,6 @@
         }
 
         #endregion
-
-        private Button btn_teacherSearch;
         private TextBox tb_teacherSearchDatabase;
         private DataGridView dG_teacher;
         private TextBox tB_teacherEmail;
@@ -263,5 +295,9 @@
         private Label lbl_teacherAdress;
         private Label lbl_teacherSurname;
         private Label lbl_teacherName;
+        protected ComboBox cB_sex;
+        private Label lbl_sex;
+        private CheckedListBox cLBTeacher;
+        private Label lbl_search;
     }
 }

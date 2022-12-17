@@ -13,6 +13,9 @@ namespace Stundenplaner_Mader_Hauser
         public static DataTable dt = new DataTable();
         private static SqlDataAdapter adp = new SqlDataAdapter();
 
+        public static List<int> IDSelectSubject = new List<int>();
+        public static string NameSelectSubject;
+
         #region Variables
         public static string SubjectName;
         public static string SubjectFullname;
@@ -132,5 +135,53 @@ namespace Stundenplaner_Mader_Hauser
                 MessageBox.Show(e.ToString());
             }
         }
+
+        public static List<int> SelectSubjectID()
+        {
+            try
+            {
+                IDSelectSubject.Clear();
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT ID FROM swp5_subject";
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int temp = reader.GetInt32(0);
+                        IDSelectSubject.Add(temp);
+                    }
+                }
+                else
+                {
+
+                }
+                con.Close();
+                return IDSelectSubject;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return IDSelectSubject;
+            }
+        }
+        public static void SelectSubjectName(int ID)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT name FROM swp5_subject where ID = '" + ID + "';");
+                NameSelectSubject = (string)cmd.ExecuteScalar();
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
     }
 }

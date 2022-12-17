@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace Stundenplaner_Mader_Hauser
 {
@@ -12,6 +13,9 @@ namespace Stundenplaner_Mader_Hauser
     {
         public static DataTable dt = new DataTable();
         private static SqlDataAdapter adp = new SqlDataAdapter();
+
+        public static List<int> ClassNamesID = new List<int>();
+        public static string NameSelectClass;
 
         #region Variables
         public static string ClassName;
@@ -121,6 +125,56 @@ namespace Stundenplaner_Mader_Hauser
 
                 MessageBox.Show(name + " wurde bearbeitet!");
 
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+
+        public static List<int> LoadClassNamesID()
+        {
+            try
+            {
+                ClassNamesID.Clear();
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = ("SELECT ID FROM swp5_class");
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int temp = reader.GetInt32(0);
+                        ClassNamesID.Add(temp);
+                    }
+                }
+                else
+                {
+
+                }
+                con.Close();
+                return ClassNamesID;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return ClassNamesID;
+            }
+        }
+
+        public static void SelectClassName(int ID)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT name FROM swp5_class where ID = '" + ID + "';");
+                NameSelectClass = (string)cmd.ExecuteScalar();
+                con.Close();
             }
             catch (Exception e)
             {

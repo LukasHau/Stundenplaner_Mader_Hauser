@@ -36,7 +36,6 @@
             this.tb_studentName = new System.Windows.Forms.TextBox();
             this.tb_studentSurname = new System.Windows.Forms.TextBox();
             this.tb_studentAdress = new System.Windows.Forms.TextBox();
-            this.tb_studentClass = new System.Windows.Forms.TextBox();
             this.dtp_studentBirth = new System.Windows.Forms.DateTimePicker();
             this.cb_studentAdd = new System.Windows.Forms.CheckBox();
             this.btn_studentBack = new System.Windows.Forms.Button();
@@ -47,7 +46,10 @@
             this.tB_email = new System.Windows.Forms.TextBox();
             this.dG_student = new System.Windows.Forms.DataGridView();
             this.tb_searchDatabase = new System.Windows.Forms.TextBox();
-            this.btn_search = new System.Windows.Forms.Button();
+            this.lbl_sex = new System.Windows.Forms.Label();
+            this.cB_sex = new System.Windows.Forms.ComboBox();
+            this.cB_class = new System.Windows.Forms.ComboBox();
+            this.lbl_search = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dG_student)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             // lbl_studentAdress
             // 
             this.lbl_studentAdress.AutoSize = true;
-            this.lbl_studentAdress.Location = new System.Drawing.Point(12, 177);
+            this.lbl_studentAdress.Location = new System.Drawing.Point(12, 212);
             this.lbl_studentAdress.Name = "lbl_studentAdress";
             this.lbl_studentAdress.Size = new System.Drawing.Size(51, 15);
             this.lbl_studentAdress.TabIndex = 2;
@@ -90,7 +92,7 @@
             // lbl_studentClass
             // 
             this.lbl_studentClass.AutoSize = true;
-            this.lbl_studentClass.Location = new System.Drawing.Point(12, 257);
+            this.lbl_studentClass.Location = new System.Drawing.Point(12, 292);
             this.lbl_studentClass.Name = "lbl_studentClass";
             this.lbl_studentClass.Size = new System.Drawing.Size(42, 15);
             this.lbl_studentClass.TabIndex = 4;
@@ -112,18 +114,11 @@
             // 
             // tb_studentAdress
             // 
-            this.tb_studentAdress.Location = new System.Drawing.Point(105, 174);
+            this.tb_studentAdress.Location = new System.Drawing.Point(105, 209);
             this.tb_studentAdress.Multiline = true;
             this.tb_studentAdress.Name = "tb_studentAdress";
             this.tb_studentAdress.Size = new System.Drawing.Size(216, 74);
             this.tb_studentAdress.TabIndex = 9;
-            // 
-            // tb_studentClass
-            // 
-            this.tb_studentClass.Location = new System.Drawing.Point(105, 254);
-            this.tb_studentClass.Name = "tb_studentClass";
-            this.tb_studentClass.Size = new System.Drawing.Size(216, 23);
-            this.tb_studentClass.TabIndex = 10;
             // 
             // dtp_studentBirth
             // 
@@ -146,7 +141,7 @@
             // 
             // btn_studentBack
             // 
-            this.btn_studentBack.Location = new System.Drawing.Point(9, 294);
+            this.btn_studentBack.Location = new System.Drawing.Point(9, 329);
             this.btn_studentBack.Name = "btn_studentBack";
             this.btn_studentBack.Size = new System.Drawing.Size(89, 28);
             this.btn_studentBack.TabIndex = 13;
@@ -156,7 +151,7 @@
             // 
             // btn_studentSave
             // 
-            this.btn_studentSave.Location = new System.Drawing.Point(584, 294);
+            this.btn_studentSave.Location = new System.Drawing.Point(584, 329);
             this.btn_studentSave.Name = "btn_studentSave";
             this.btn_studentSave.Size = new System.Drawing.Size(89, 28);
             this.btn_studentSave.TabIndex = 14;
@@ -166,7 +161,7 @@
             // 
             // btn_studentDelete
             // 
-            this.btn_studentDelete.Location = new System.Drawing.Point(489, 294);
+            this.btn_studentDelete.Location = new System.Drawing.Point(489, 329);
             this.btn_studentDelete.Name = "btn_studentDelete";
             this.btn_studentDelete.Size = new System.Drawing.Size(89, 28);
             this.btn_studentDelete.TabIndex = 16;
@@ -176,7 +171,7 @@
             // 
             // btn_studentLoad
             // 
-            this.btn_studentLoad.Location = new System.Drawing.Point(394, 294);
+            this.btn_studentLoad.Location = new System.Drawing.Point(394, 329);
             this.btn_studentLoad.Name = "btn_studentLoad";
             this.btn_studentLoad.Size = new System.Drawing.Size(89, 28);
             this.btn_studentLoad.TabIndex = 17;
@@ -187,7 +182,7 @@
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
-            this.lbl_email.Location = new System.Drawing.Point(12, 148);
+            this.lbl_email.Location = new System.Drawing.Point(12, 183);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(44, 15);
             this.lbl_email.TabIndex = 18;
@@ -195,7 +190,7 @@
             // 
             // tB_email
             // 
-            this.tB_email.Location = new System.Drawing.Point(105, 145);
+            this.tB_email.Location = new System.Drawing.Point(105, 180);
             this.tB_email.Name = "tB_email";
             this.tB_email.Size = new System.Drawing.Size(216, 23);
             this.tB_email.TabIndex = 19;
@@ -209,32 +204,66 @@
             this.dG_student.ReadOnly = true;
             this.dG_student.RowTemplate.Height = 25;
             this.dG_student.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dG_student.Size = new System.Drawing.Size(298, 229);
+            this.dG_student.Size = new System.Drawing.Size(298, 264);
             this.dG_student.TabIndex = 20;
             this.dG_student.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_student_CellClick);
             this.dG_student.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_student_CellContentClick);
             // 
             // tb_searchDatabase
             // 
-            this.tb_searchDatabase.Location = new System.Drawing.Point(375, 18);
+            this.tb_searchDatabase.Location = new System.Drawing.Point(430, 19);
             this.tb_searchDatabase.Name = "tb_searchDatabase";
-            this.tb_searchDatabase.Size = new System.Drawing.Size(203, 23);
+            this.tb_searchDatabase.Size = new System.Drawing.Size(243, 23);
             this.tb_searchDatabase.TabIndex = 21;
             this.tb_searchDatabase.TextChanged += new System.EventHandler(this.tb_searchDatabase_TextChanged);
             // 
-            // btn_search
+            // lbl_sex
             // 
-            this.btn_search.Location = new System.Drawing.Point(584, 14);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(89, 28);
-            this.btn_search.TabIndex = 22;
-            this.btn_search.Text = "Suchen";
-            this.btn_search.UseVisualStyleBackColor = true;
+            this.lbl_sex.AutoSize = true;
+            this.lbl_sex.Location = new System.Drawing.Point(9, 149);
+            this.lbl_sex.Name = "lbl_sex";
+            this.lbl_sex.Size = new System.Drawing.Size(68, 15);
+            this.lbl_sex.TabIndex = 23;
+            this.lbl_sex.Text = "Geschlecht:";
+            this.lbl_sex.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cB_sex
+            // 
+            this.cB_sex.FormattingEnabled = true;
+            this.cB_sex.Items.AddRange(new object[] {
+            "m",
+            "w"});
+            this.cB_sex.Location = new System.Drawing.Point(105, 146);
+            this.cB_sex.Name = "cB_sex";
+            this.cB_sex.Size = new System.Drawing.Size(73, 23);
+            this.cB_sex.TabIndex = 24;
+            this.cB_sex.SelectedIndexChanged += new System.EventHandler(this.cB_sex_SelectedIndexChanged);
+            // 
+            // cB_class
+            // 
+            this.cB_class.FormattingEnabled = true;
+            this.cB_class.Location = new System.Drawing.Point(105, 289);
+            this.cB_class.Name = "cB_class";
+            this.cB_class.Size = new System.Drawing.Size(216, 23);
+            this.cB_class.TabIndex = 25;
+            this.cB_class.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // lbl_search
+            // 
+            this.lbl_search.AutoSize = true;
+            this.lbl_search.Location = new System.Drawing.Point(375, 22);
+            this.lbl_search.Name = "lbl_search";
+            this.lbl_search.Size = new System.Drawing.Size(49, 15);
+            this.lbl_search.TabIndex = 26;
+            this.lbl_search.Text = "Suchen:";
             // 
             // Schueler
             // 
-            this.ClientSize = new System.Drawing.Size(685, 334);
-            this.Controls.Add(this.btn_search);
+            this.ClientSize = new System.Drawing.Size(685, 364);
+            this.Controls.Add(this.lbl_search);
+            this.Controls.Add(this.cB_class);
+            this.Controls.Add(this.cB_sex);
+            this.Controls.Add(this.lbl_sex);
             this.Controls.Add(this.tb_searchDatabase);
             this.Controls.Add(this.dG_student);
             this.Controls.Add(this.tB_email);
@@ -245,7 +274,6 @@
             this.Controls.Add(this.btn_studentBack);
             this.Controls.Add(this.cb_studentAdd);
             this.Controls.Add(this.dtp_studentBirth);
-            this.Controls.Add(this.tb_studentClass);
             this.Controls.Add(this.tb_studentAdress);
             this.Controls.Add(this.tb_studentSurname);
             this.Controls.Add(this.tb_studentName);
@@ -273,7 +301,6 @@
         private TextBox tb_studentName;
         private TextBox tb_studentSurname;
         private TextBox tb_studentAdress;
-        private TextBox tb_studentClass;
         private DateTimePicker dtp_studentBirth;
         private CheckBox cb_studentAdd;
         private Button btn_studentBack;
@@ -284,6 +311,9 @@
         private TextBox tB_email;
         private DataGridView dG_student;
         private TextBox tb_searchDatabase;
-        private Button btn_search;
+        private Label lbl_sex;
+        protected ComboBox cB_sex;
+        protected ComboBox cB_class;
+        private Label lbl_search;
     }
 }

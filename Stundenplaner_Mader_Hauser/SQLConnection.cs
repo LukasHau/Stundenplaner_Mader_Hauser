@@ -65,13 +65,13 @@ namespace Stundenplaner_Mader_Hauser
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_login') CREATE TABLE swp5_login ([Id] INT IDENTITY (1, 1) NOT NULL, [username] VARCHAR(50) NULL,[password] VARCHAR(200) NULL, [role] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_student') CREATE TABLE swp5_student ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, [school_class] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_student') CREATE TABLE swp5_student ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [sex] VARCHAR(10) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, [school_class] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_teacher') CREATE TABLE swp5_teacher ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_teacher') CREATE TABLE swp5_teacher ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL,[surname] VARCHAR(50) NULL, [sex] VARCHAR(10) NULL, [birth] VARCHAR(50) NULL, [adress] VARCHAR(250) NULL, [email] VARCHAR(150) NULL, [ID_login] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject') CREATE TABLE swp5_subject ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [exam] INT, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject') CREATE TABLE swp5_subject ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [fullname] VARCHAR(150) NULL, [exam] INT, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_subject_teacher') CREATE TABLE swp5_subject_teacher ([Id] INT IDENTITY (1, 1) NOT NULL, [ID_teacher] INT NULL, [ID_subject] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
@@ -183,9 +183,11 @@ namespace Stundenplaner_Mader_Hauser
         #endregion
 
         #region DataGridView
+
         public static void SaveDG()
         {
-            //saves the DataGrid in Verwaltung
+            //for future use
+            //saves the DataGrid
             try
             {
                 adp.UpdateCommand = CommandBuilder.GetUpdateCommand();
@@ -214,121 +216,14 @@ namespace Stundenplaner_Mader_Hauser
             return userRole;
         }
 
-        #region EVENT
-
-        public static bool CheckEvent(string date)
-        {
-            con.Open();
-            cmd.CommandText = ("SELECT Id FROM swp5_event where date = '" + date + "';");
-            string temp = Convert.ToString(cmd.ExecuteScalar());
-            con.Close();
-
-            if (String.IsNullOrEmpty(temp))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static void CreateEvent(string date, string place, string time, string eventName, string client, string contactPerson, string description)
-        {
-            //checks if all required data is filled
-            if (String.IsNullOrEmpty(place) || String.IsNullOrEmpty(time) || String.IsNullOrEmpty(eventName) || String.IsNullOrEmpty(client))
-            {
-                MessageBox.Show("Bitte füllen Sie alle Felder aus!");
-                errormessage = true;
-            }
-            else
-            {
-                try
-                {
-                    con.Open();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = ("INSERT INTO swp5_event(date, place, time, eventName, client, contactPerson, description) VALUES('" + date + "', '" + place + "', '" + time + "', '" + eventName + "', '" + client + "', '" + contactPerson + "', '" + description + "');");
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    errormessage = false;
-                    MessageBox.Show(eventName + " wurde hinzugefügt!");
-                }
-                catch (Exception e)
-                {
-                    con.Close();
-                    MessageBox.Show(e.ToString());
-                }
-            }
-        }
-
-        public static void LoadEvent(string date)
-        {
-            try
-            {
-                con.Open();
-                cmd.CommandText = ("SELECT place FROM swp5_event where date = '" + date + "';");
-                EventPlace = (string)cmd.ExecuteScalar();
-
-                cmd.CommandText = ("SELECT time FROM swp5_event where date = '" + date + "';");
-                EventTime = (string)cmd.ExecuteScalar();
-
-                cmd.CommandText = ("SELECT eventName FROM swp5_event where date = '" + date + "';");
-                EventeventName = (string)cmd.ExecuteScalar();
-
-                cmd.CommandText = ("SELECT client FROM swp5_event where date = '" + date + "';");
-                EventClient = (string)cmd.ExecuteScalar();
-
-                cmd.CommandText = ("SELECT contactPerson FROM swp5_event where date = '" + date + "';");
-                EventContactPerson = (string)cmd.ExecuteScalar();
-
-                cmd.CommandText = ("SELECT description FROM swp5_event where date = '" + date + "';");
-                EventDescription = (string)cmd.ExecuteScalar();
-                con.Close();
-            }
-            catch (Exception e)
-            {
-                con.Close();
-                MessageBox.Show(e.ToString());
-            }
-        }
-
-        public static void ChangeEvent(string date, string place, string time, string eventName, string client, string contactPerson, string description)
-        {
-            //checks if all required data is filled
-            if (String.IsNullOrEmpty(place) || String.IsNullOrEmpty(time) || String.IsNullOrEmpty(eventName) || String.IsNullOrEmpty(client))
-            {
-                MessageBox.Show("Bitte füllen Sie alle Felder aus!");
-                errormessage = true;
-            }
-            else
-            {
-                try
-                {
-                    con.Open();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = ("UPDATE swp5_event set place = '" + place + "', time = '" + time + "', eventName = '" + eventName + "', client = '" + client + "', contactPerson = '" + contactPerson + "', description = '" + description + "' where date = '" + date + "';");
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    MessageBox.Show(eventName + " wurde bearbeitet!");
-                }
-                catch (Exception e)
-                {
-                    con.Close();
-                    MessageBox.Show(e.ToString());
-                }
-            }
-        }
-
-        #region StaffInUse
-        public static void DeleteStaffInUse(string date)
+        #region Subject_teacher
+        public static void DeleteTeacherSubject(int teacherID)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("DELETE FROM swp5_staffInUse WHERE date = '" + date + "';");
+                cmd.CommandText = ("DELETE FROM swp5_subject_teacher WHERE ID_teacher = '" + teacherID + "';");
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -339,13 +234,13 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        public static void AddStaffInUse(int staffID, string date)
+        public static void AddTeacherSubject(int teacherID, int subjectID)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("INSERT INTO swp5_staffInUse(staffID, date) VALUES('" + staffID + "', '" + date + "');");
+                cmd.CommandText = ("INSERT INTO swp5_subject_teacher(ID_teacher, ID_subject) VALUES('" + teacherID + "', '" + subjectID + "');");
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -356,15 +251,15 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        public static List<int> IDLoadStaffInUse = new List<int>();
-        public static List<int> LoadStaffInUse(string date)
+        public static List<int> IDLoadSubjectTeacher = new List<int>();
+        public static List<int> LoadSubjectTeacher(int TeacherID)
         {
             try
             {
-                IDLoadStaffInUse.Clear();
+                IDLoadSubjectTeacher.Clear();
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT staffID FROM swp5_staffInUse where date = '" + date + "'";
+                cmd.CommandText = "SELECT ID_subject FROM swp5_subject_teacher where ID_teacher = '" + TeacherID + "'";
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
@@ -372,83 +267,18 @@ namespace Stundenplaner_Mader_Hauser
                     while (reader.Read())
                     {
                         int temp = reader.GetInt32(0);
-                        IDLoadStaffInUse.Add(temp);
+                        IDLoadSubjectTeacher.Add(temp);
                     }
                 }
                 con.Close();
-                return IDLoadStaffInUse;
+                return IDLoadSubjectTeacher;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                return IDLoadStaffInUse;
+                return IDLoadSubjectTeacher;
             }
         }
-        #endregion
-
-        #region EquipmentInUse
-        public static void DeleteEquipInUse(string date)
-        {
-            try
-            {
-                con.Open();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("DELETE FROM swp5_equipInUse WHERE date = '" + date + "';");
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception e)
-            {
-                con.Close();
-                MessageBox.Show(e.ToString());
-            }
-        }
-        public static void AddEquipInUse(int equipID, string date)
-        {
-            try
-            {
-                con.Open();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("INSERT INTO swp5_equipInUse(equipID, date) VALUES('" + equipID + "', '" + date + "');");
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception e)
-            {
-                con.Close();
-                MessageBox.Show(e.ToString());
-            }
-        }
-
-        public static List<int> IDLoadEquipInUse = new List<int>();
-        public static List<int> LoadEquipInUse(string date)
-        {
-            try
-            {
-                IDLoadEquipInUse.Clear();
-                con.Open();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT equipID FROM swp5_equipInUse where date = '" + date + "'";
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        int temp = reader.GetInt32(0);
-                        IDLoadEquipInUse.Add(temp);
-                    }
-                }
-                con.Close();
-                return IDLoadEquipInUse;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return IDLoadEquipInUse;
-            }
-        }
-        #endregion
         #endregion
 
     }

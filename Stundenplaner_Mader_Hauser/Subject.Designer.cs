@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_subjectSearch = new System.Windows.Forms.Button();
             this.tb_subjectSearchDatabase = new System.Windows.Forms.TextBox();
             this.dG_subject = new System.Windows.Forms.DataGridView();
             this.btn_subjectLoad = new System.Windows.Forms.Button();
@@ -42,24 +41,15 @@
             this.cB_subjectSchularbeit = new System.Windows.Forms.CheckBox();
             this.lbl_subjectFullname = new System.Windows.Forms.Label();
             this.tb_SubjectFullname = new System.Windows.Forms.TextBox();
+            this.lbl_search = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dG_subject)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_subjectSearch
-            // 
-            this.btn_subjectSearch.Location = new System.Drawing.Point(223, 155);
-            this.btn_subjectSearch.Name = "btn_subjectSearch";
-            this.btn_subjectSearch.Size = new System.Drawing.Size(89, 28);
-            this.btn_subjectSearch.TabIndex = 60;
-            this.btn_subjectSearch.Text = "Suchen";
-            this.btn_subjectSearch.UseVisualStyleBackColor = true;
-            this.btn_subjectSearch.Click += new System.EventHandler(this.btn_subjectSearch_Click);
-            // 
             // tb_subjectSearchDatabase
             // 
-            this.tb_subjectSearchDatabase.Location = new System.Drawing.Point(14, 159);
+            this.tb_subjectSearchDatabase.Location = new System.Drawing.Point(72, 160);
             this.tb_subjectSearchDatabase.Name = "tb_subjectSearchDatabase";
-            this.tb_subjectSearchDatabase.Size = new System.Drawing.Size(203, 23);
+            this.tb_subjectSearchDatabase.Size = new System.Drawing.Size(235, 23);
             this.tb_subjectSearchDatabase.TabIndex = 59;
             this.tb_subjectSearchDatabase.TextChanged += new System.EventHandler(this.tb_subjectSearchDatabase_TextChanged);
             // 
@@ -178,15 +168,24 @@
             this.tb_SubjectFullname.Size = new System.Drawing.Size(187, 23);
             this.tb_SubjectFullname.TabIndex = 63;
             // 
+            // lbl_search
+            // 
+            this.lbl_search.AutoSize = true;
+            this.lbl_search.Location = new System.Drawing.Point(17, 163);
+            this.lbl_search.Name = "lbl_search";
+            this.lbl_search.Size = new System.Drawing.Size(49, 15);
+            this.lbl_search.TabIndex = 64;
+            this.lbl_search.Text = "Suchen:";
+            // 
             // Subject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 464);
+            this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.tb_SubjectFullname);
             this.Controls.Add(this.lbl_subjectFullname);
             this.Controls.Add(this.cB_subjectSchularbeit);
-            this.Controls.Add(this.btn_subjectSearch);
             this.Controls.Add(this.tb_subjectSearchDatabase);
             this.Controls.Add(this.dG_subject);
             this.Controls.Add(this.btn_subjectLoad);
@@ -207,8 +206,6 @@
         }
 
         #endregion
-
-        private Button btn_subjectSearch;
         private TextBox tb_subjectSearchDatabase;
         private DataGridView dG_subject;
         private Button btn_subjectLoad;
@@ -222,5 +219,6 @@
         private CheckBox cB_subjectSchularbeit;
         private Label lbl_subjectFullname;
         private TextBox tb_SubjectFullname;
+        private Label lbl_search;
     }
 }

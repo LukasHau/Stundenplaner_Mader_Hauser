@@ -18,10 +18,19 @@ namespace Stundenplaner_Mader_Hauser
         }
 
         private static int teacherID;
+        private static int subjectID;
 
         private void Lehrer_Load(object sender, EventArgs e)
         {
             dG_teacher.DataSource = Teacher.LoadDG();
+
+            foreach (int x in SubjectSQL.SelectSubjectID())
+            {
+                x.ToString();
+                SubjectSQL.SelectSubjectName(x);
+
+                cLBTeacher.Items.Add(x + ".       " + SubjectSQL.NameSelectSubject);
+            }
         }
 
         private void btn_teacherLoad_Click(object sender, EventArgs e)
@@ -29,18 +38,37 @@ namespace Stundenplaner_Mader_Hauser
             if (cb_teacherAdd.Checked)
             {
                 //checks if all required data is filled
-                if (String.IsNullOrEmpty(tb_teacherName.Text) || String.IsNullOrEmpty(tb_teacherSurname.Text) || String.IsNullOrEmpty(tB_teacherEmail.Text))
+                if (String.IsNullOrEmpty(tb_teacherName.Text) || String.IsNullOrEmpty(tb_teacherSurname.Text) || String.IsNullOrEmpty(tB_teacherEmail.Text) || cB_sex.SelectedItem == null)
                 {
                     MessageBox.Show("Bitte füllen Sie alle Felder aus!");
                 }
                 else
                 {
-                    Teacher.CreateTeacher(tb_teacherName.Text, tb_teacherSurname.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text, 0);
+                    Teacher.CreateTeacher(tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text, 0);
+
+                    int teacher_temp = Teacher.GetTeacherID(tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date);
+
+                    SQLConnection.DeleteTeacherSubject(teacher_temp);
+
+                    if (cLBTeacher.CheckedItems.Count != 0)
+                    {
+                        // If so, loop through all checked items and print results.
+
+                        for (int x = 0; x < cLBTeacher.CheckedItems.Count; x++)
+                        {
+                            //cuts the string after the point, to get the ID of the subject
+                            subjectID = Convert.ToInt32(cLBTeacher.CheckedItems[x].ToString().Substring(0, cLBTeacher.CheckedItems[x].ToString().IndexOf(".")));
+
+                            SQLConnection.AddTeacherSubject(teacher_temp, subjectID);
+
+                        }
+                    }
+
                     clear();
                 }
             }
             else
-            {
+            {              
                 if (dG_teacher.SelectedCells.Count > 0)
                 {
                     int selectedRowIndex = dG_teacher.SelectedCells[0].RowIndex;
@@ -50,11 +78,30 @@ namespace Stundenplaner_Mader_Hauser
                     teacherID = Convert.ToInt32(cellValue);
 
                     Teacher.LoadTeacher(teacherID);
+
+                    clear();
+
                     tb_teacherName.Text = Teacher.TeacherName;
                     tb_teacherSurname.Text = Teacher.TeacherSurname;
+                    cB_sex.SelectedItem = Teacher.TeacherSex;
                     dtp_teacherBirth.Value = Convert.ToDateTime(Teacher.TeacherBirth);
                     tB_teacherEmail.Text = Teacher.TeacherEmail;
                     tb_teacherAdress.Text = Teacher.TeacherAdress;
+
+
+                    foreach (int x in SQLConnection.LoadSubjectTeacher(teacherID))
+                    {
+                        //for every item in the CheckedListBox
+                        for (int i = 0; i < cLBTeacher.Items.Count; i++)
+                        {
+                            //checks if the value of the item before the '.' = the Index, is the same, if so it checks the value
+                            if (cLBTeacher.Items[i].ToString().Substring(0, cLBTeacher.Items[i].ToString().IndexOf(".")).Contains(x.ToString()))
+                            {
+                                cLBTeacher.SetItemChecked(i, true);
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -80,6 +127,13 @@ namespace Stundenplaner_Mader_Hauser
             tB_teacherEmail.Text = "";
             tb_teacherAdress.Text = "";
             dtp_teacherBirth.Text = "";
+            cB_sex.SelectedIndex = -1;
+
+            //uncheck all items on the CheckedListbox
+            for (int i = 0; i < cLBTeacher.Items.Count; i++)
+            {
+                cLBTeacher.SetItemChecked(i, false);
+            }
         }
 
         private void cb_teacherAdd_CheckedChanged(object sender, EventArgs e)
@@ -110,13 +164,30 @@ namespace Stundenplaner_Mader_Hauser
                 teacherID = Convert.ToInt32(cellValue);
 
                 Teacher.DeleteTeacher(teacherID);
+                SQLConnection.DeleteTeacherSubject(teacherID);
                 clear();
             }
         }
 
         private void btn_teacherSave_Click(object sender, EventArgs e)
         {
-            Teacher.updateTeacher(teacherID, tb_teacherName.Text, tb_teacherSurname.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text);
+            Teacher.updateTeacher(teacherID, tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text);
+
+            SQLConnection.DeleteTeacherSubject(teacherID);
+
+            if (cLBTeacher.CheckedItems.Count != 0)
+            {
+                // If so, loop through all checked items and print results.
+
+                for (int x = 0; x < cLBTeacher.CheckedItems.Count; x++)
+                {
+                    //cuts the string after the point, to get the ID of the subject
+                    subjectID = Convert.ToInt32(cLBTeacher.CheckedItems[x].ToString().Substring(0, cLBTeacher.CheckedItems[x].ToString().IndexOf(".")));
+
+                    SQLConnection.AddTeacherSubject(teacherID, subjectID);
+
+                }
+            }
             clear();
         }
     }

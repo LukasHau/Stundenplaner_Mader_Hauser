@@ -16,20 +16,21 @@ namespace Stundenplaner_Mader_Hauser
         #region Variables
         public static string TeacherName;
         public static string TeacherSurname;
+        public static string TeacherSex;
         public static string TeacherBirth;
         public static string TeacherAdress;
         public static string TeacherEmail;
         public static int TeacherID_login;
         #endregion
 
-        public static void CreateTeacher(string name, string surname, DateTime birth, string adress, string email, int ID_login)
+        public static void CreateTeacher(string name, string surname, string sex, DateTime birth, string adress, string email, int ID_login)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("INSERT INTO swp5_teacher(name, surname, birth, adress, email, ID_login) VALUES('" + name + "', '" +
-                    surname + "', '" + birth.ToString() + "', '" + adress + "', '" + email + "', '" + ID_login + "');");
+                cmd.CommandText = ("INSERT INTO swp5_teacher(name, surname, sex, birth, adress, email, ID_login) VALUES('" + name + "', '" +
+                    surname + "', '" + sex + "', '" + birth.ToString() + "', '" + adress + "', '" + email + "', '" + ID_login + "');");
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -72,6 +73,8 @@ namespace Stundenplaner_Mader_Hauser
                 TeacherName = (string)cmd.ExecuteScalar();
                 cmd.CommandText = ("SELECT surname FROM swp5_teacher WHERE ID = '" + id + "';");
                 TeacherSurname = (string)cmd.ExecuteScalar();
+                cmd.CommandText = ("SELECT sex FROM swp5_teacher WHERE ID = '" + id + "';");
+                TeacherSex = (string)cmd.ExecuteScalar();
                 cmd.CommandText = ("SELECT birth FROM swp5_teacher WHERE ID = '" + id + "';");
                 TeacherBirth = (string)cmd.ExecuteScalar();
                 cmd.CommandText = ("SELECT adress FROM swp5_teacher WHERE ID = '" + id + "';");
@@ -125,13 +128,13 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-        public static void updateTeacher(int id, string name, string surname, DateTime birth, string adress, string email)
+        public static void updateTeacher(int id, string name, string surname, string sex, DateTime birth, string adress, string email)
         {
             try
             {
                 con.Open();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = ("UPDATE swp5_teacher set name = '" + name + "', surname = '" + surname + "', birth = '" + birth.ToString() + "', adress = '" + adress + "', email = '" + email + "' where ID = '" + id + "';");
+                cmd.CommandText = ("UPDATE swp5_teacher set name = '" + name + "', surname = '" + surname + "', sex = '" + sex + "', birth = '" + birth.ToString() + "', adress = '" + adress + "', email = '" + email + "' where ID = '" + id + "';");
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -144,5 +147,27 @@ namespace Stundenplaner_Mader_Hauser
                 MessageBox.Show(e.ToString());
             }
         }
+
+
+        public static int GetTeacherID(string name, string surname, string sex, DateTime birth)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = ("SELECT ID from swp5_teacher where name = '" + name + "' AND surname = '" + surname + "' AND sex = '" + sex + "' AND birth = '" + birth.ToString() + "';");
+                int TeacherID = (int)cmd.ExecuteScalar();
+                con.Close();
+
+                return TeacherID;
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+                return -1;
+            }
+        }
+
     }
 }
