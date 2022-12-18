@@ -48,7 +48,14 @@ namespace Stundenplaner_Mader_Hauser
                 }
                 else
                 {
-                    ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
+                    if (!String.IsNullOrEmpty(cB_class.Text))
+                    {
+                        ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
+                    }
+                    else
+                    {
+                        ClassID = -1;
+                    }
 
                     Student.CreateStudent(tb_studentName.Text, tb_studentSurname.Text, cB_sex.Text, dtp_studentBirth.Value.Date, tb_studentAdress.Text, tB_email.Text, 0, ClassID);
                     clear();
@@ -61,10 +68,12 @@ namespace Stundenplaner_Mader_Hauser
                     int selectedRowIndex = dG_student.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedtRow = dG_student.Rows[selectedRowIndex];
                     string cellValue = Convert.ToString(selectedtRow.Cells["ID"].Value);
-
+                 
                     studentID = Convert.ToInt32(cellValue);
 
                     Student.LoadStudent(studentID);
+
+                    clear();
 
                     tb_studentName.Text = Student.StudentName;
                     tb_studentSurname.Text = Student.StudentSurname;
@@ -81,7 +90,7 @@ namespace Stundenplaner_Mader_Hauser
                         {
                             cB_class.SelectedIndex = i;
                         }
-                    }                   
+                    }                 
                 }
             }     
         }
@@ -157,7 +166,14 @@ namespace Stundenplaner_Mader_Hauser
         
         private void btn_studentSave_Click(object sender, EventArgs e)
         {
-            ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
+            if (!String.IsNullOrEmpty(cB_class.Text))
+            {
+                ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
+            }
+            else
+            {
+                ClassID = -1;
+            }
             Student.updateStudent(studentID, tb_studentName.Text, tb_studentSurname.Text, cB_sex.Text, dtp_studentBirth.Value.Date, tb_studentAdress.Text, tB_email.Text, ClassID);
             clear();
         }
