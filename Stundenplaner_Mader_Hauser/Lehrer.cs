@@ -24,6 +24,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             dG_teacher.DataSource = Teacher.LoadDG();
 
+            //add the subjects in the form
             foreach (int x in SubjectSQL.SelectSubjectID())
             {
                 x.ToString();
@@ -44,6 +45,7 @@ namespace Stundenplaner_Mader_Hauser
                 }
                 else
                 {
+                    //create teacher in the database
                     Teacher.CreateTeacher(tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text, 0);
 
                     int teacher_temp = Teacher.GetTeacherID(tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date);
@@ -60,7 +62,6 @@ namespace Stundenplaner_Mader_Hauser
                             subjectID = Convert.ToInt32(cLBTeacher.CheckedItems[x].ToString().Substring(0, cLBTeacher.CheckedItems[x].ToString().IndexOf(".")));
 
                             SQLConnection.AddTeacherSubject(teacher_temp, subjectID);
-
                         }
                     }
 
@@ -71,6 +72,7 @@ namespace Stundenplaner_Mader_Hauser
             {              
                 if (dG_teacher.SelectedCells.Count > 0)
                 {
+                    //load teacher from database into the form
                     int selectedRowIndex = dG_teacher.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedtRow = dG_teacher.Rows[selectedRowIndex];
                     string cellValue = Convert.ToString(selectedtRow.Cells["ID"].Value);
@@ -88,7 +90,7 @@ namespace Stundenplaner_Mader_Hauser
                     tB_teacherEmail.Text = Teacher.TeacherEmail;
                     tb_teacherAdress.Text = Teacher.TeacherAdress;
 
-
+                    //load the subject from the teacher
                     foreach (int x in SQLConnection.LoadSubjectTeacher(teacherID))
                     {
                         //for every item in the CheckedListBox
@@ -108,6 +110,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_teacherBack_Click(object sender, EventArgs e)
         {
+            //on the button back you get back into the main form
             Main_admin temp = new Main_admin();
             this.Close();
             temp.Show();
@@ -115,11 +118,13 @@ namespace Stundenplaner_Mader_Hauser
 
         private void tb_teacherSearchDatabase_TextChanged(object sender, EventArgs e)
         {
+            //if you search something in the searchbar it shows in the datagrid
             (dG_teacher.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%' OR surname LIKE '{0}%'", tb_teacherSearchDatabase.Text);
         }
 
         private void clear()
         {
+            //clear everything
             dG_teacher.ClearSelection();
             dG_teacher.DataSource = Teacher.LoadDG();
             tb_teacherName.Text = "";
@@ -138,6 +143,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cb_teacherAdd_CheckedChanged(object sender, EventArgs e)
         {
+            //if checkbox is checked the buttons get enabled and a text shows up
             if (cb_teacherAdd.Checked)
             {
                 btn_teacherLoad.Text = "Hinzufügen";
@@ -155,6 +161,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_teacherDelete_Click(object sender, EventArgs e)
         {
+            //select a cell in the datagrid and press delete, the whole teacher gets deleted
             if (dG_teacher.SelectedCells.Count > 0)
             {
                 int selectedRowIndex = dG_teacher.SelectedCells[0].RowIndex;
@@ -171,6 +178,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_teacherSave_Click(object sender, EventArgs e)
         {
+            //if you press the button the teacher will be saved
             Teacher.updateTeacher(teacherID, tb_teacherName.Text, tb_teacherSurname.Text, cB_sex.Text, dtp_teacherBirth.Value.Date, tb_teacherAdress.Text, tB_teacherEmail.Text);
 
             SQLConnection.DeleteTeacherSubject(teacherID);

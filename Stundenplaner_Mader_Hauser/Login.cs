@@ -50,7 +50,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cB_passwordChar_CheckedChanged(object sender, EventArgs e)
         {
-            //shows the user his password before pressing any button
+            //shows the user his password when pressing any button
             if (cB_passwordChar.Checked)
             {
                 tB_login_password.PasswordChar = '\0';
@@ -63,16 +63,16 @@ namespace Stundenplaner_Mader_Hauser
 
         private void pB_addUser_Click(object sender, EventArgs e)
         {
+            //create user
             username = tB_login_name.Text;
             string password = tB_login_password.Text;
 
             SQLConnection.create_user(username, password);
-            
-            //toDo Registration
         }
 
         private void tB_login_password_KeyDown(object sender, KeyEventArgs e)
         {
+            //if enter gets pressed
             if (e.KeyCode == Keys.Enter)
             {
                 username = tB_login_name.Text;
@@ -92,10 +92,6 @@ namespace Stundenplaner_Mader_Hauser
                 }
 
                 tB_login_password.Text = "";
-
-                // these last two lines will stop the beep sound
-                e.SuppressKeyPress = true;
-                e.Handled = true;
             }
         }
 
@@ -120,10 +116,6 @@ namespace Stundenplaner_Mader_Hauser
                 }
 
                 tB_login_password.Text = "";
-
-                // these last two lines will stop the beep sound
-                e.SuppressKeyPress = true;
-                e.Handled = true;
             }
         }
     }

@@ -22,17 +22,20 @@ namespace Stundenplaner_Mader_Hauser
 
         private void Subject_Load(object sender, EventArgs e)
         {
+            //load the subject
             dG_subject.DataSource = SubjectSQL.LoadDG();
         }
 
         private void btn_teacherSave_Click(object sender, EventArgs e)
         {
+            //save the subject to the teacher
             SubjectSQL.updateSubject(subjectID, tb_SubjectName.Text, tb_SubjectFullname.Text, exam);
             clear();
         }
 
         private void btn_subjectLoad_Click(object sender, EventArgs e)
         {
+           
             if (cb_subjectAdd.Checked)
             {
                     SubjectSQL.CreateSubject(tb_SubjectName.Text, tb_SubjectFullname.Text, exam);
@@ -40,6 +43,7 @@ namespace Stundenplaner_Mader_Hauser
             }
             else
             {
+                //load the subject into the form
                 if (dG_subject.SelectedCells.Count > 0)
                 {
                     int selectedRowIndex = dG_subject.SelectedCells[0].RowIndex;
@@ -65,6 +69,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cB_subjectSchularbeit_CheckedChanged(object sender, EventArgs e)
         {
+            //checkbox if it is a exam subject
             if (cB_subjectSchularbeit.Checked)
             {
                 exam = 1;
@@ -77,6 +82,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_subejctDelete_Click(object sender, EventArgs e)
         {
+            //if button is clicked delete the whole subject
             if (dG_subject.SelectedCells.Count > 0)
             {
                 int selectedRowIndex = dG_subject.SelectedCells[0].RowIndex;
@@ -92,6 +98,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void clear()
         {
+            //clear everything
             dG_subject.ClearSelection();
             dG_subject.DataSource = SubjectSQL.LoadDG();
             tb_SubjectName.Text = "";
@@ -101,6 +108,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cb_subjectAdd_CheckedChanged(object sender, EventArgs e)
         {
+            //if checkbox is checked the buttons get enabled and a text shows up
             if (cb_subjectAdd.Checked)
             {
                 btn_subjectLoad.Text = "Hinzufügen";
@@ -118,6 +126,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_subjectBack_Click(object sender, EventArgs e)
         {
+            //on the button back you get back into the main form
             Main_admin temp = new Main_admin();
             this.Close();
             temp.Show();
@@ -130,6 +139,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void tb_subjectSearchDatabase_TextChanged(object sender, EventArgs e)
         {
+            //if you search something in the searchbar it shows in the datagrid
             (dG_subject.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%'", tb_subjectSearchDatabase.Text);
         }
     }

@@ -27,6 +27,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             try
             {
+                //create the teacher and write it into the database
                 con.Open();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = ("INSERT INTO swp5_teacher(name, surname, sex, birth, adress, email, ID_login) VALUES('" + name + "', '" +
@@ -68,6 +69,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             try
             {
+                //load the teacher into the form
                 con.Open();
                 cmd.CommandText = ("SELECT name FROM swp5_teacher WHERE ID = '" + id + "';");
                 TeacherName = (string)cmd.ExecuteScalar();
@@ -97,6 +99,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             try
             {
+                //delete the whole teacher
                 con.Open();
                 cmd.CommandText = ("SELECT name FROM swp5_teacher WHERE ID = '" + id + "';");
                 string tempName = (string)cmd.ExecuteScalar();
@@ -133,6 +136,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             try
             {
+                //update the teacher
                 con.Open();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = ("UPDATE swp5_teacher set name = '" + name + "', surname = '" + surname + "', sex = '" + sex + "', birth = '" + birth.ToString() + "', adress = '" + adress + "', email = '" + email + "' where ID = '" + id + "';");
@@ -149,11 +153,11 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
-
         public static int GetTeacherID(string name, string surname, string sex, DateTime birth)
         {
             try
             {
+                //get the teacher ID
                 con.Open();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = ("SELECT ID from swp5_teacher where name = '" + name + "' AND surname = '" + surname + "' AND sex = '" + sex + "' AND birth = '" + birth.ToString() + "';");

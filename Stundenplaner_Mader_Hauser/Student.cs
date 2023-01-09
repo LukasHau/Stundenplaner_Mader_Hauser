@@ -27,6 +27,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void CreateStudent(string name, string surname, string sex, DateTime birth, string adress, string email, int ID_login, int school_class)
         {
+            //create the student
             try
             {
                 con.Open();

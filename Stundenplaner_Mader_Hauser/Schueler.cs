@@ -19,7 +19,7 @@ namespace Stundenplaner_Mader_Hauser
         {
             InitializeComponent();
 
-
+            //select class name
             foreach (int x in ClassSQL.LoadClassNamesID())
             {
                 x.ToString();
@@ -65,6 +65,7 @@ namespace Stundenplaner_Mader_Hauser
             {
                 if (dG_student.SelectedCells.Count > 0)
                 {
+                    //load student from database into the form
                     int selectedRowIndex = dG_student.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedtRow = dG_student.Rows[selectedRowIndex];
                     string cellValue = Convert.ToString(selectedtRow.Cells["ID"].Value);
@@ -97,6 +98,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_studentBack_Click(object sender, EventArgs e)
         {
+            //on the button back you get back into the main form
             Main_admin temp = new Main_admin();
             this.Close();
             temp.Show();
@@ -109,6 +111,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void tb_searchDatabase_TextChanged(object sender, EventArgs e)
         {
+            //if you search something in the searchbar it shows in the datagrid
             (dG_student.DataSource as DataTable).DefaultView.RowFilter = 
                 string.Format("name LIKE '{0}%' OR surname LIKE '{0}%'", tb_searchDatabase.Text);
         }
@@ -120,6 +123,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void clear()
         {
+            //clears everything
             dG_student.ClearSelection();
             dG_student.DataSource = Student.LoadDG();
             tb_studentName.Text = "";
@@ -133,6 +137,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cb_studentAdd_CheckedChanged(object sender, EventArgs e)
         {
+            //if checkbox is checked the buttons get enabled and a text shows up
             if (cb_studentAdd.Checked)
             {
                 btn_studentLoad.Text = "Hinzufügen";
@@ -150,6 +155,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_studentDelete_Click(object sender, EventArgs e)
         {
+            //select a cell in the datagrid and press delete, the whole student gets deleted
             if (dG_student.SelectedCells.Count > 0)
             {
                 int selectedRowIndex = dG_student.SelectedCells[0].RowIndex;
@@ -166,6 +172,7 @@ namespace Stundenplaner_Mader_Hauser
         
         private void btn_studentSave_Click(object sender, EventArgs e)
         {
+            //if you press the button the student will be saved
             if (!String.IsNullOrEmpty(cB_class.Text))
             {
                 ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));

@@ -21,18 +21,8 @@ namespace Stundenplaner_Mader_Hauser
         public static bool errormessage;
         public static string choosen_username;
 
-
-        #region VariablesForEventLoad
-        public static string EventPlace;
-        public static string EventTime;
-        public static string EventeventName;
-        public static string EventClient;
-        public static string EventContactPerson;
-        public static string EventDescription;
-        #endregion
-
         #region Connection
-        //sets the conncetion string
+        //sets the connection string
         public static void SetConnectionString(string userCon)
         {
             try
@@ -182,29 +172,9 @@ namespace Stundenplaner_Mader_Hauser
 
         #endregion
 
-        #region DataGridView
-
-        public static void SaveDG()
-        {
-            //for future use
-            //saves the DataGrid
-            try
-            {
-                adp.UpdateCommand = CommandBuilder.GetUpdateCommand();
-                adp.Update(dt);
-                MessageBox.Show("Gespeichert!");
-            }
-            catch
-            {
-                MessageBox.Show("Ein Fehler ist aufgetreten!");
-            }
-        }
-
-        #endregion
-
         public static string checkRole(string username)
         {
-            //Checks the Role from a user
+            //checks the Role from a user
             string userRole;
 
             con.Open();
@@ -219,6 +189,7 @@ namespace Stundenplaner_Mader_Hauser
         #region Subject_teacher
         public static void DeleteTeacherSubject(int teacherID)
         {
+            //delete a subject from a teacher
             try
             {
                 con.Open();
@@ -236,6 +207,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void AddTeacherSubject(int teacherID, int subjectID)
         {
+            //add a subject to a teacher
             try
             {
                 con.Open();
@@ -254,6 +226,7 @@ namespace Stundenplaner_Mader_Hauser
         public static List<int> IDLoadSubjectTeacher = new List<int>();
         public static List<int> LoadSubjectTeacher(int TeacherID)
         {
+            //load all subjects from a teacher
             try
             {
                 IDLoadSubjectTeacher.Clear();

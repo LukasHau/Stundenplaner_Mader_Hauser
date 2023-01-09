@@ -24,6 +24,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
+            //log out
             Login temp = new Login();
             this.Close();
             temp.Show();
@@ -31,6 +32,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_student_Click(object sender, EventArgs e)
         {
+            //get to the student form
             Schueler temp = new Schueler();
             this.Close();
             temp.Show();
@@ -38,6 +40,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_teacher_Click(object sender, EventArgs e)
         {
+            //get to the teacher form
             Lehrer temp = new Lehrer();
             this.Close();
             temp.Show();
@@ -45,6 +48,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_classes_Click(object sender, EventArgs e)
         {
+            //get to the class form
             Klasse temp = new Klasse();
             this.Close();
             temp.Show();
@@ -52,6 +56,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_subjects_Click(object sender, EventArgs e)
         {
+            //get to the subject form
             Subject temp = new Subject();
             this.Close();
             temp.Show();
