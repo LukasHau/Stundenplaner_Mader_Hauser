@@ -84,6 +84,7 @@ namespace Stundenplaner_Mader_Hauser
                 cmd.CommandText = ("SELECT ID_login FROM swp5_teacher WHERE ID = '" + id + "';");
                 TeacherID_login = (int)cmd.ExecuteScalar();
                 con.Close();
+
             }
             catch (Exception e)
             {
