@@ -17,5 +17,9 @@ namespace Stundenplaner_Mader_Hauser
             InitializeComponent();
         }
 
+        private void Calendar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
