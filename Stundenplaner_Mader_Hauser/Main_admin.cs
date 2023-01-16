@@ -61,5 +61,12 @@ namespace Stundenplaner_Mader_Hauser
             this.Close();
             temp.Show();
         }
+
+        private void btn_timetalbe_Click(object sender, EventArgs e)
+        {
+            Calendar temp = new Calendar();
+            this.Close();
+            temp.Show();
+        }
     }
 }

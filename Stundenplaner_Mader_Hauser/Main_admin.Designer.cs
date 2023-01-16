@@ -68,6 +68,7 @@
             this.btn_timetalbe.TabIndex = 2;
             this.btn_timetalbe.Text = "Stundenplan";
             this.btn_timetalbe.UseVisualStyleBackColor = true;
+            this.btn_timetalbe.Click += new System.EventHandler(this.btn_timetalbe_Click);
             // 
             // lbl_wellcome
             // 
