@@ -181,6 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(319, 464);
             this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.tb_SubjectFullname);
@@ -196,7 +197,9 @@
             this.Controls.Add(this.tb_SubjectName);
             this.Controls.Add(this.lbl_subjectSchularbeit);
             this.Controls.Add(this.lbl_subjectName);
+            this.MaximizeBox = false;
             this.Name = "Subject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Subject";
             this.Load += new System.EventHandler(this.Subject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dG_subject)).EndInit();

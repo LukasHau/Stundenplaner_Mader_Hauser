@@ -246,6 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(919, 334);
             this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.cLBTeacher);
@@ -268,7 +269,9 @@
             this.Controls.Add(this.lbl_teacherAdress);
             this.Controls.Add(this.lbl_teacherSurname);
             this.Controls.Add(this.lbl_teacherName);
+            this.MaximizeBox = false;
             this.Name = "Lehrer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lehrer";
             this.Load += new System.EventHandler(this.Lehrer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dG_teacher)).EndInit();
