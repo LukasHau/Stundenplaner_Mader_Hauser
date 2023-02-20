@@ -17,6 +17,7 @@ namespace Stundenplaner_Mader_Hauser
             InitializeComponent();
         }
 
+        int ClassID;
         int daysMultiplyer = 0;
 
         private void Calendar_Load(object sender, EventArgs e)
@@ -32,7 +33,6 @@ namespace Stundenplaner_Mader_Hauser
 
                 cB_class.Items.Add(x + ".    " + ClassSQL.NameSelectClass);
             }
-
         }
 
         private void displayDays()
@@ -48,6 +48,43 @@ namespace Stundenplaner_Mader_Hauser
             lbl_date3.Text = wednesday.ToString("dd. MMMM");
             lbl_date4.Text = thursday.ToString("dd. MMMM");
             lbl_date5.Text = friday.ToString("dd. MMMM");
+
+            int subjectClass = 2;
+
+            for (int i = 1; i < 9; i++)
+            {
+                Subject_timetable_full SubjectFull = new Subject_timetable_full();               
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 1, i));
+                subjectContainerMonday.Controls.Add(SubjectFull);
+            }
+
+            for (int i = 1; i < 9; i++)
+            {
+                Subject_timetable_full SubjectFull = new Subject_timetable_full();
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 2, i));
+                subjectContainerThuesday.Controls.Add(SubjectFull);
+            }
+
+            for (int i = 1; i < 9; i++)
+            {
+                Subject_timetable_full SubjectFull = new Subject_timetable_full();
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 3, i));
+                subjectContainerWednesday.Controls.Add(SubjectFull);
+            }
+
+            for (int i = 1; i < 9; i++)
+            {
+                Subject_timetable_full SubjectFull = new Subject_timetable_full();
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 4, i));
+                subjectContainerThursday.Controls.Add(SubjectFull);
+            }
+
+            for (int i = 1; i < 9; i++)
+            {
+                Subject_timetable_full SubjectFull = new Subject_timetable_full();
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 5, i));
+                subjectContainerFriday.Controls.Add(SubjectFull);
+            }
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -93,7 +130,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void cB_class_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
+            ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
             MessageBox.Show(ClassID.ToString());
         }
     }

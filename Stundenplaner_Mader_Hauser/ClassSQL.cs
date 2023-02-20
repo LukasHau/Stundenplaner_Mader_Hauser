@@ -182,5 +182,37 @@ namespace Stundenplaner_Mader_Hauser
                 MessageBox.Show(e.ToString());
             }
         }
+
+
+        public static string SelectSubjectID(int IDclass, int day, int hour)
+        {
+            string NameOfSubject;
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT subject FROM swp5_schedule where classID = '" + IDclass.ToString() + "' AND dayOfWeek ='" + day.ToString() + "' AND hour='" + hour.ToString() + "';");               
+                object SubjectID = cmd.ExecuteScalar();
+                con.Close();
+                if (SubjectID != null)
+                {
+                    con.Open();
+                    cmd.CommandText = ("SELECT name FROM swp5_subject where ID = '" + SubjectID.ToString() + "';");
+                    NameOfSubject = (string)cmd.ExecuteScalar();
+                    con.Close();
+                    return NameOfSubject;
+                }
+                else
+                {
+                    return "Frei";
+                }
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+                return e.ToString();
+
+            }
+        }
     }
 }
