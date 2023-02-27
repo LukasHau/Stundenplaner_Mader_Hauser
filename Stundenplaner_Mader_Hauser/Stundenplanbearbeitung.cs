@@ -18,7 +18,6 @@ namespace Stundenplaner_Mader_Hauser
         }
 
         int ClassID;
-        List<string> ls = new List<string>();
 
         private void Stundenplanbearbeitung_Load(object sender, EventArgs e)
         {
@@ -31,12 +30,6 @@ namespace Stundenplaner_Mader_Hauser
 
                 cB_class.Items.Add(x + ".    " + ClassSQL.NameSelectClass);
             }
-
-            foreach (string x in SubjectSQL.AllSubjects())
-            {
-                ls.Add(x);
-            }
-            ls.Add("Freistunde");
         }
 
         public List<ComboBox> cB = new List<ComboBox>();
@@ -44,13 +37,17 @@ namespace Stundenplaner_Mader_Hauser
         public void CreateCB(string day)
         {
             for (int i = 1; i < 9; i++)
-            {
-                //cB.Add(new ComboBox() {Name = "cB_" + day + i });                
+            {              
                 ComboBox b = new ComboBox();
                 b.Name = "cB_" + day + i;
+                //Location machen!!!!
                 b.Location = new Point(100, 50);
-                //TODO: List funktioniert nicht!!!!!!
-                b.Items.Add(ls);                           
+                //Liste geht :)
+                foreach (string x in SubjectSQL.AllSubjects())
+                {
+                    b.Items.Add(x);
+                }
+                b.Items.Add("Freistunde");                           
                 this.Controls.Add(b);
             }           
         }
