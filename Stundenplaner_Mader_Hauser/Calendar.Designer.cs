@@ -74,6 +74,7 @@
             this.subjectContainerWednesday = new System.Windows.Forms.FlowLayoutPanel();
             this.subjectContainerThursday = new System.Windows.Forms.FlowLayoutPanel();
             this.subjectContainerFriday = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_tableLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_name
@@ -505,11 +506,22 @@
             this.subjectContainerFriday.Size = new System.Drawing.Size(99, 504);
             this.subjectContainerFriday.TabIndex = 4;
             // 
+            // btn_tableLoad
+            // 
+            this.btn_tableLoad.Location = new System.Drawing.Point(476, 623);
+            this.btn_tableLoad.Name = "btn_tableLoad";
+            this.btn_tableLoad.Size = new System.Drawing.Size(135, 23);
+            this.btn_tableLoad.TabIndex = 45;
+            this.btn_tableLoad.Text = "Stundenplan laden";
+            this.btn_tableLoad.UseVisualStyleBackColor = true;
+            this.btn_tableLoad.Click += new System.EventHandler(this.btn_tableLoad_Click);
+            // 
             // Calendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 649);
+            this.Controls.Add(this.btn_tableLoad);
             this.Controls.Add(this.subjectContainerFriday);
             this.Controls.Add(this.subjectContainerThursday);
             this.Controls.Add(this.subjectContainerWednesday);
@@ -611,5 +623,6 @@
         private FlowLayoutPanel subjectContainerWednesday;
         private FlowLayoutPanel subjectContainerThursday;
         private FlowLayoutPanel subjectContainerFriday;
+        private Button btn_tableLoad;
     }
 }

@@ -203,7 +203,7 @@ namespace Stundenplaner_Mader_Hauser
                 }
                 else
                 {
-                    return "Frei";
+                    return "Frei";     
                 }
             }
             catch (Exception e)

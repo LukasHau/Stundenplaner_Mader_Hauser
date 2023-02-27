@@ -19,11 +19,11 @@ namespace Stundenplaner_Mader_Hauser
 
         int ClassID;
         int daysMultiplyer = 0;
+        int subjectClass = 0;
 
         private void Calendar_Load(object sender, EventArgs e)
         {
             lbl_name.Text = Login.username;
-            displayDays();
 
             //select class name
             foreach (int x in ClassSQL.LoadClassNamesID())
@@ -49,7 +49,6 @@ namespace Stundenplaner_Mader_Hauser
             lbl_date4.Text = thursday.ToString("dd. MMMM");
             lbl_date5.Text = friday.ToString("dd. MMMM");
 
-            int subjectClass = 2;
 
             for (int i = 1; i < 9; i++)
             {
@@ -85,6 +84,15 @@ namespace Stundenplaner_Mader_Hauser
                 SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 5, i));
                 subjectContainerFriday.Controls.Add(SubjectFull);
             }
+        }
+
+        private void displayDaysClear()
+        {
+            subjectContainerMonday.Controls.Clear();
+            subjectContainerThuesday.Controls.Clear();
+            subjectContainerWednesday.Controls.Clear();
+            subjectContainerThursday.Controls.Clear();
+            subjectContainerFriday.Controls.Clear();
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -132,6 +140,13 @@ namespace Stundenplaner_Mader_Hauser
         {
             ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
             MessageBox.Show(ClassID.ToString());
+            subjectClass = ClassID;
+        }
+
+        private void btn_tableLoad_Click(object sender, EventArgs e)
+        {
+            displayDaysClear();
+            displayDays();
         }
     }
 }

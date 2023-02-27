@@ -127,6 +127,7 @@
             this.btn_createTimetable.TabIndex = 8;
             this.btn_createTimetable.Text = "Stundenplan erstellen/ändern";
             this.btn_createTimetable.UseVisualStyleBackColor = true;
+            this.btn_createTimetable.Click += new System.EventHandler(this.btn_createTimetable_Click);
             // 
             // Main_admin
             // 

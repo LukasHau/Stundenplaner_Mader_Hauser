@@ -68,5 +68,12 @@ namespace Stundenplaner_Mader_Hauser
             this.Close();
             temp.Show();
         }
+
+        private void btn_createTimetable_Click(object sender, EventArgs e)
+        {
+            Stundenplanbearbeitung temp = new Stundenplanbearbeitung();
+            this.Close();
+            temp.Show();
+        }
     }
 }
