@@ -21,7 +21,12 @@ namespace Stundenplaner_Mader_Hauser
 
         private void Stundenplanbearbeitung_Load(object sender, EventArgs e)
         {
-            ls.Clear();
+            CBonForm("monday", 108);
+            CBonForm("tuesday", 234);
+            CBonForm("wednesday", 360);
+            CBonForm("thursday", 486);
+            CBonForm("friday", 612);
+
             //select class name
             foreach (int x in ClassSQL.LoadClassNamesID())
             {
@@ -34,20 +39,18 @@ namespace Stundenplaner_Mader_Hauser
 
         public List<ComboBox> cB = new List<ComboBox>();
 
-        public void CreateCB(string day)
+        public void CreateCB(string day, int x1, int y1)
         {
             for (int i = 1; i < 9; i++)
             {              
                 ComboBox b = new ComboBox();
-                b.Name = "cB_" + day + i;
-                //Location machen!!!!
-                b.Location = new Point(100, 50);
-                //Liste geht :)
+                b.Name = "cB_" + day;
+                b.Location = new Point(x1, y1);
+                b.Size = new Size(102, 23);
                 foreach (string x in SubjectSQL.AllSubjects())
                 {
                     b.Items.Add(x);
                 }
-                b.Items.Add("Freistunde");                           
                 this.Controls.Add(b);
             }           
         }
@@ -63,7 +66,6 @@ namespace Stundenplaner_Mader_Hauser
         private void cB_class_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
-            MessageBox.Show(ClassID.ToString());
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -73,7 +75,45 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            CreateCB("monday1");
+            SubjectSQL.DeleteSchedule(ClassID);
+            GetSubjectName("monday", 1);
+            GetSubjectName("tuesday", 2);
+            GetSubjectName("wednesday", 3);
+            GetSubjectName("thursday", 4);
+            GetSubjectName("friday", 5);
+        }
+
+        private void GetSubjectName(string day, int day_number)
+        {
+            foreach (Control c in Controls)
+            {
+                for (int i = 1; i < 9; i++)
+                {
+                    if (!c.Name.Equals("cB_" + day + i))
+                    {
+                        continue;
+                    }
+
+                    ComboBox cB = c as ComboBox;
+                    if (cB.SelectedItem == null)
+                    {
+                        continue;
+                    }
+
+                    SubjectSQL.FillSchedule(day_number, i, SubjectSQL.SelectSubjectID(cB.SelectedItem.ToString()), ClassID);
+                }
+            }
+        }
+
+        private void CBonForm(string day_name, int x)
+        {
+            int y = 94;
+            for (int i = 1; i < 9; i++)
+            {
+                string temp = day_name + i;
+                CreateCB(temp, x, y);
+                y = y + 36;
+            }
         }
     }
 }

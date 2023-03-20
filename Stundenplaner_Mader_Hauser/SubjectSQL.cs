@@ -216,5 +216,52 @@ namespace Stundenplaner_Mader_Hauser
 
         }
 
+        public static void FillSchedule(int dayOfWeek, int hour, int subject, int classID)
+        {
+            con.Open();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = ("INSERT INTO swp5_schedule(dayOfWeek, hour, subject, classID) VALUES('" + dayOfWeek + "', '" + hour + "', '" + subject + "', '" +
+                classID + "');");
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public static int SelectSubjectID(string name)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT ID FROM swp5_subject where name = '" + name + "';");
+                int temp = (int)cmd.ExecuteScalar();
+                con.Close();
+                return temp;
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return 0;
+                MessageBox.Show(e.ToString());
+
+            }
+        }
+
+        public static void DeleteSchedule(int ID)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = ("DELETE FROM swp5_schedule WHERE classID = '" + ID + "';");
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
     }
 }

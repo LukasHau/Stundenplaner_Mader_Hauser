@@ -39,6 +39,7 @@
             this.lbl_subject.Size = new System.Drawing.Size(83, 15);
             this.lbl_subject.TabIndex = 0;
             this.lbl_subject.Text = "Subject empty";
+            this.lbl_subject.Click += new System.EventHandler(this.lbl_subject_Click);
             // 
             // Subject_timetable
             // 

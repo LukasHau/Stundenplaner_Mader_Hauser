@@ -23,6 +23,8 @@ namespace Stundenplaner_Mader_Hauser
 
         private void Calendar_Load(object sender, EventArgs e)
         {
+            displayDays();
+
             lbl_name.Text = Login.username;
 
             //select class name

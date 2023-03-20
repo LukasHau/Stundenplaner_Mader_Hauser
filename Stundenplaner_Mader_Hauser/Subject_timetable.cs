@@ -21,5 +21,10 @@ namespace Stundenplaner_Mader_Hauser
         {
 
         }
+
+        private void lbl_subject_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
