@@ -203,7 +203,8 @@ namespace Stundenplaner_Mader_Hauser
                 }
                 else
                 {
-                    return "Frei";     
+                    //no text when the student have no subject
+                    return "";     
                 }
             }
             catch (Exception e)

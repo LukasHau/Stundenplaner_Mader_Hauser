@@ -64,6 +64,24 @@ namespace Stundenplaner_Mader_Hauser
                 return dt;
             }
         }
+         public static DataTable LoadDGteacher()
+        {
+            //clears the DataTable
+            dt.Clear();
+            //shows the data in the DataGrid
+            try
+            {
+                cmd = new SqlCommand("SELECT Id, name, surname, ID_login FROM swp5_teacher", con);
+                adp.SelectCommand = cmd;
+                adp.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten!");
+                return dt;
+            }
+        }
 
         public static void LoadTeacher(int id)
         {

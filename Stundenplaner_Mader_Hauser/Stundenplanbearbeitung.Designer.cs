@@ -235,6 +235,7 @@
             this.btn_load.TabIndex = 60;
             this.btn_load.Text = "Laden";
             this.btn_load.UseVisualStyleBackColor = true;
+            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // btn_save
             // 

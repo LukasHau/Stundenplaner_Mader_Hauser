@@ -17,7 +17,7 @@ namespace Stundenplaner_Mader_Hauser
             InitializeComponent();
         }
 
-        int ClassID;
+        int ClassID = -1;
 
         private void Stundenplanbearbeitung_Load(object sender, EventArgs e)
         {
@@ -81,6 +81,8 @@ namespace Stundenplaner_Mader_Hauser
             GetSubjectName("wednesday", 3);
             GetSubjectName("thursday", 4);
             GetSubjectName("friday", 5);
+
+            MessageBox.Show("Stundenplan wurde gespeichert!");
         }
 
         private void GetSubjectName(string day, int day_number)
@@ -113,6 +115,56 @@ namespace Stundenplaner_Mader_Hauser
                 string temp = day_name + i;
                 CreateCB(temp, x, y);
                 y = y + 36;
+            }
+        }
+
+        private void btn_load_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(SubjectSQL.GetScheduleEdit(ClassID, 1, 1).ToString());
+            //int temp = SubjectSQL.GetScheduleEdit(ClassID, 1, 1);
+            //SubjectSQL.SelectSubjectFullname(temp);
+            //MessageBox.Show(SubjectSQL.NameSelectSubject);
+
+            if (ClassID == -1)
+            {
+                MessageBox.Show("Bitte wählen Sie eine Klasse aus!");
+            }
+            else
+            {
+                FillSubjects("monday", 1);
+                FillSubjects("tuesday", 2);
+                FillSubjects("wednesday", 3);
+                FillSubjects("thursday", 4);
+                FillSubjects("friday", 5);
+            }
+        }
+
+        private void FillSubjects(string day, int day_number)
+        {
+
+            foreach (Control c in Controls)
+            {
+                for (int i = 1; i < 9; i++)
+                {
+                    if (!c.Name.Equals("cB_" + day + i))
+                    {
+                        continue;
+                    }
+
+                    ComboBox cB = c as ComboBox;
+
+                    int temp = SubjectSQL.GetScheduleEdit(ClassID, day_number, i);
+
+                    if (temp == -1)
+                    {
+                        cB.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        SubjectSQL.SelectSubjectName(temp);
+                        cB.SelectedIndex = cB.Items.IndexOf(SubjectSQL.NameSelectSubject);
+                    }
+                }
             }
         }
     }

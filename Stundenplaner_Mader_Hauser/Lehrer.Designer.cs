@@ -71,6 +71,7 @@
             this.dG_teacher.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dG_teacher.Size = new System.Drawing.Size(298, 229);
             this.dG_teacher.TabIndex = 40;
+            this.dG_teacher.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_teacher_CellContentClick);
             // 
             // tB_teacherEmail
             // 

@@ -55,7 +55,7 @@ namespace Stundenplaner_Mader_Hauser
             for (int i = 1; i < 9; i++)
             {
                 Subject_timetable_full SubjectFull = new Subject_timetable_full();               
-                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 1, i));
+                SubjectFull.Subject_Name(ClassSQL.SelectSubjectID(subjectClass, 1, i));               
                 subjectContainerMonday.Controls.Add(SubjectFull);
             }
 
@@ -141,7 +141,6 @@ namespace Stundenplaner_Mader_Hauser
         private void cB_class_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClassID = Convert.ToInt32(cB_class.Text.Substring(0, cB_class.Text.IndexOf(".")));
-            MessageBox.Show(ClassID.ToString());
             subjectClass = ClassID;
         }
 
@@ -149,6 +148,11 @@ namespace Stundenplaner_Mader_Hauser
         {
             displayDaysClear();
             displayDays();
+        }
+
+        private void subjectContainerMonday_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

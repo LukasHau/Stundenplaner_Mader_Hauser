@@ -104,6 +104,7 @@
             this.subjectContainerMonday.Name = "subjectContainerMonday";
             this.subjectContainerMonday.Size = new System.Drawing.Size(99, 504);
             this.subjectContainerMonday.TabIndex = 3;
+            this.subjectContainerMonday.Paint += new System.Windows.Forms.PaintEventHandler(this.subjectContainerMonday_Paint);
             // 
             // btn_previousWeek
             // 

@@ -184,6 +184,22 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
+        public static void SelectSubjectFullname(int ID)
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT fullname FROM swp5_subject where ID = '" + ID + "';");
+                NameSelectSubject = (string)cmd.ExecuteScalar();
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
         public static List<string> AllSubjects()
         {
             try
@@ -262,6 +278,35 @@ namespace Stundenplaner_Mader_Hauser
                 MessageBox.Show(e.ToString());
             }
         }
+
+        public static int GetScheduleEdit(int classID, int day, int hour)
+        {
+            int temp;
+            try
+            {
+                con.Open();
+                cmd.CommandText = ("SELECT subject FROM swp5_schedule WHERE classID = '" + classID + "' AND dayOfWeek = '" + day + "' AND hour = '" + hour + "';");
+                var x = cmd.ExecuteScalar();
+                if(x == null)
+                {
+                    temp = -1;
+                }
+                else
+                {
+                    temp = (int)cmd.ExecuteScalar();
+                }
+                con.Close();
+                return temp;
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return -1;
+                MessageBox.Show(e.ToString());
+            }
+        }
+
 
     }
 }

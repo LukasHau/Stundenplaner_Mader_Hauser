@@ -186,6 +186,25 @@ namespace Stundenplaner_Mader_Hauser
             return userRole;
         }
 
+        public static DataTable LoadDGuser()
+        {
+            //clears the DataTable
+            dt.Clear();
+            //shows the data in the DataGrid
+            try
+            {
+                cmd = new SqlCommand("SELECT Id, username, role FROM swp5_login", con);
+                adp.SelectCommand = cmd;
+                adp.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten!");
+                return dt;
+            }
+        }
+
         #region Subject_teacher
         public static void DeleteTeacherSubject(int teacherID)
         {
