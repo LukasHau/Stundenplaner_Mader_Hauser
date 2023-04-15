@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_studentBack = new System.Windows.Forms.Button();
             this.dG_user = new System.Windows.Forms.DataGridView();
+            this.btn_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dG_teacher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dG_student)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dG_user)).BeginInit();
@@ -45,7 +46,6 @@
             this.dG_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG_teacher.Location = new System.Drawing.Point(394, 237);
             this.dG_teacher.Name = "dG_teacher";
-            this.dG_teacher.ReadOnly = true;
             this.dG_teacher.RowTemplate.Height = 25;
             this.dG_teacher.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dG_teacher.Size = new System.Drawing.Size(394, 161);
@@ -66,7 +66,6 @@
             this.dG_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG_student.Location = new System.Drawing.Point(394, 46);
             this.dG_student.Name = "dG_student";
-            this.dG_student.ReadOnly = true;
             this.dG_student.RowTemplate.Height = 25;
             this.dG_student.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dG_student.Size = new System.Drawing.Size(394, 161);
@@ -101,11 +100,22 @@
             this.dG_user.Size = new System.Drawing.Size(341, 351);
             this.dG_user.TabIndex = 46;
             // 
+            // btn_save
+            // 
+            this.btn_save.Location = new System.Drawing.Point(699, 410);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(89, 28);
+            this.btn_save.TabIndex = 47;
+            this.btn_save.Text = "Speichern";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
             // Benutzerverwaltung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_save);
             this.Controls.Add(this.dG_user);
             this.Controls.Add(this.btn_studentBack);
             this.Controls.Add(this.label2);
@@ -131,5 +141,6 @@
         private Label label2;
         private Button btn_studentBack;
         private DataGridView dG_user;
+        private Button btn_save;
     }
 }

@@ -13,6 +13,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static DataTable dt = new DataTable();
         private static SqlDataAdapter adp = new SqlDataAdapter();
+        public static SqlCommandBuilder CommandBuilder = new SqlCommandBuilder(adp);
 
         #region Variables
         public static string StudentName;
@@ -83,6 +84,20 @@ namespace Stundenplaner_Mader_Hauser
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten!");
                 return dt;
+            }
+        }
+
+        public static void SaveDG()
+        {
+            //saves the DataGrid in Verwaltung
+            try
+            {
+                adp.UpdateCommand = CommandBuilder.GetUpdateCommand();
+                adp.Update(dt);
+            }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten!");
             }
         }
 

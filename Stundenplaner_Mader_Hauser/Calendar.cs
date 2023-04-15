@@ -99,10 +99,18 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            //on the button back you get back into the main form
-            Main_admin temp = new Main_admin();
-            this.Close();
-            temp.Show();
+            if (Login.userrole == "admin")
+            {
+                Main_admin temp = new Main_admin();
+                this.Hide();
+                temp.Show();
+            }
+            else
+            {
+                Main_student temp = new Main_student();
+                this.Hide();
+                temp.Show();
+            }     
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

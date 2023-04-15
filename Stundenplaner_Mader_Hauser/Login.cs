@@ -39,10 +39,18 @@ namespace Stundenplaner_Mader_Hauser
             {
                 SQLConnection.choosen_username = username;
 
-                Main_admin temp = new Main_admin();
-                this.Hide();
-
-                temp.Show();
+                if(userrole == "admin")
+                {
+                    Main_admin temp = new Main_admin();
+                    this.Hide();
+                    temp.Show();
+                }
+                else
+                {
+                    Main_student temp = new Main_student();
+                    this.Hide();
+                    temp.Show();
+                }                       
             }
 
             tB_login_password.Text = string.Empty;
@@ -63,11 +71,8 @@ namespace Stundenplaner_Mader_Hauser
 
         private void pB_addUser_Click(object sender, EventArgs e)
         {
-            //create user
-            username = tB_login_name.Text;
-            string password = tB_login_password.Text;
-
-            SQLConnection.create_user(username, password);
+            Registrieren temp = new Registrieren();
+            temp.Show();
         }
 
         private void tB_login_password_KeyDown(object sender, KeyEventArgs e)
@@ -85,10 +90,18 @@ namespace Stundenplaner_Mader_Hauser
                 {
                     SQLConnection.choosen_username = username;
 
-                    Main_admin temp = new Main_admin();
-                    this.Hide();
-
-                    temp.Show();
+                    if (userrole == "admin")
+                    {
+                        Main_admin temp = new Main_admin();
+                        this.Hide();
+                        temp.Show();
+                    }
+                    else
+                    {
+                        Main_student temp = new Main_student();
+                        this.Hide();
+                        temp.Show();
+                    }
                 }
 
                 tB_login_password.Text = "";
@@ -109,10 +122,18 @@ namespace Stundenplaner_Mader_Hauser
                 {
                     SQLConnection.choosen_username = username;
 
-                    Main_admin temp = new Main_admin();
-                    this.Hide();
-
-                    temp.Show();
+                    if (userrole == "admin")
+                    {
+                        Main_admin temp = new Main_admin();
+                        this.Hide();
+                        temp.Show();
+                    }
+                    else
+                    {
+                        Main_student temp = new Main_student();
+                        this.Hide();
+                        temp.Show();
+                    }
                 }
 
                 tB_login_password.Text = "";

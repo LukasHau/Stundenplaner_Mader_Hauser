@@ -69,6 +69,9 @@ namespace Stundenplaner_Mader_Hauser
 
                 cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_class') CREATE TABLE swp5_class ([Id] INT IDENTITY (1, 1) NOT NULL, [name] VARCHAR(50) NULL, [room] VARCHAR(50) NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
                 cmd.ExecuteNonQuery();
+
+                cmd.CommandText = ("IF NOT EXISTS (SELECT * FROM sys.tables WHERE [name] = 'swp5_schedule') CREATE TABLE swp5_schedule ([Id] INT IDENTITY (1, 1) NOT NULL, [dayOfWeek] INT NULL, [hour] INT NULL, [subject] INT NULL, [classID] INT NULL, PRIMARY KEY CLUSTERED([Id] ASC))");
+                cmd.ExecuteNonQuery();
                 con.Close();
 
             }
@@ -148,7 +151,7 @@ namespace Stundenplaner_Mader_Hauser
 
                         con.Open();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = ("INSERT INTO swp5_login (username, password, role) VALUES ('" + username + "', '" + hashedpw + "', 'admin');");
+                        cmd.CommandText = ("INSERT INTO swp5_login (username, password, role) VALUES ('" + username + "', '" + hashedpw + "', 'user');");
                         cmd.ExecuteNonQuery();
                         con.Close();
 
@@ -202,6 +205,21 @@ namespace Stundenplaner_Mader_Hauser
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten!");
                 return dt;
+            }
+        }
+
+        public static void SaveDG()
+        {
+            //saves the DataGrid in Verwaltung
+            try
+            {
+                adp.UpdateCommand = CommandBuilder.GetUpdateCommand();
+                adp.Update(dt);
+                MessageBox.Show("Gespeichert!");
+            }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten!");
             }
         }
 

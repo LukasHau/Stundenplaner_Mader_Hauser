@@ -33,5 +33,12 @@ namespace Stundenplaner_Mader_Hauser
             this.Close();
             temp.Show();
         }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Teacher.SaveDG();
+            Student.SaveDG();
+            SQLConnection.SaveDG();
+        }
     }
 }
