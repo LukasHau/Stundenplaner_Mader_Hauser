@@ -83,6 +83,7 @@
             this.Controls.Add(this.btn_timetalbe);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
             this.Name = "Main_student";
             this.Text = "Main_student";
             this.Load += new System.EventHandler(this.Main_student_Load);

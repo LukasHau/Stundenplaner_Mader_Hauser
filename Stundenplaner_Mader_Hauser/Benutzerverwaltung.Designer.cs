@@ -114,6 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.dG_user);
@@ -122,7 +123,9 @@
             this.Controls.Add(this.dG_student);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dG_teacher);
+            this.MaximizeBox = false;
             this.Name = "Benutzerverwaltung";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Benutzerverwaltung";
             this.Load += new System.EventHandler(this.Benutzerverwaltung_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dG_teacher)).EndInit();

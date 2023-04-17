@@ -251,6 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(735, 450);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_load);
@@ -272,7 +273,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.cB_class);
+            this.MaximizeBox = false;
             this.Name = "Stundenplanbearbeitung";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stundenplanbearbeitung";
             this.Load += new System.EventHandler(this.Stundenplanbearbeitung_Load);
             this.ResumeLayout(false);
