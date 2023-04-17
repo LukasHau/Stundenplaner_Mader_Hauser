@@ -64,6 +64,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_timetalbe_Click(object sender, EventArgs e)
         {
+            //changes the form to the schedule
             Calendar temp = new Calendar();
             this.Close();
             temp.Show();
@@ -71,6 +72,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_createTimetable_Click(object sender, EventArgs e)
         {
+            //changes the form to the schedule creater
             Stundenplanbearbeitung temp = new Stundenplanbearbeitung();
             this.Close();
             temp.Show();
@@ -78,6 +80,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //changes the form to the user manager
             Benutzerverwaltung temp = new Benutzerverwaltung();
             this.Close();
             temp.Show();

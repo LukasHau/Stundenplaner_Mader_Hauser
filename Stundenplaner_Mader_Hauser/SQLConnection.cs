@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Stundenplaner_Mader_Hauser
 {
@@ -191,6 +194,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static int GetIDLogin(string username)
         {
+            //get the ID from the logged in user
             int IDLogin;
 
             con.Open();
@@ -202,10 +206,27 @@ namespace Stundenplaner_Mader_Hauser
             return IDLogin;
         }
 
+        public static bool check(int ID)
+        {
+            //checks if the logged in user is a student
+            con.Open();
+            cmd.CommandText = ("SELECT name FROM swp5_student WHERE ID_login = '" + ID + "';");
+            string temp = (string)cmd.ExecuteScalar();
+            con.Close();
+            if(temp == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
+        }
 
         public static int GetClassID(int ID_login)
         {
+            //get the CLASS from the logged in user
             int ClassID;
 
             con.Open();

@@ -46,6 +46,7 @@ namespace Stundenplaner_Mader_Hauser
             }
             else
             {
+                //when the passwords don't match you get a message box warning
                 MessageBox.Show("Passwörter stimmen nicht überein!", "Warnung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tB_password.Clear();
                 tB_password2.Clear();

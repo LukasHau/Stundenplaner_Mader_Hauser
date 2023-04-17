@@ -24,6 +24,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void CreateClass(string name, string room)
         {
+            //creates a class
             try
             {
                 con.Open();
@@ -64,6 +65,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void LoadClass(int id)
         {
+            //loads a class
             try
             {
                 con.Open();
@@ -82,6 +84,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void DeleteClass(int id)
         {
+            //deletes a class
             try
             {
                 con.Open();
@@ -115,6 +118,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void updateClass(int id, string name, string room)
         {
+            //update a class
             try
             {
                 con.Open();
@@ -136,6 +140,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static List<int> LoadClassNamesID()
         {
+            //puts all class names into a list for a dropdownlist
             try
             {
                 ClassNamesID.Clear();
@@ -169,6 +174,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static void SelectClassName(int ID)
         {
+            //select a class
             try
             {
                 con.Open();
@@ -186,6 +192,7 @@ namespace Stundenplaner_Mader_Hauser
 
         public static string SelectSubjectID(int IDclass, int day, int hour)
         {
+            //select a subject
             string NameOfSubject;
             try
             {

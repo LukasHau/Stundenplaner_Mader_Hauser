@@ -23,19 +23,21 @@ namespace Stundenplaner_Mader_Hauser
 
         private void Calendar_Load(object sender, EventArgs e)
         {
+            //load the calender of the logged in user
             displayDays();
 
             lbl_name.Text = Login.username;
 
             string userrole = SQLConnection.checkRole(Login.username);
 
-            if(userrole == "user")
+            if (userrole == "user" && SQLConnection.check(SQLConnection.GetIDLogin(Login.username)) == true)
             {
+
+                lbl_name.Text = Login.username + " user";
                 cB_class.Enabled = false;
 
                 ClassID = SQLConnection.GetClassID(SQLConnection.GetIDLogin(Login.username));
                 subjectClass = ClassID;
-                MessageBox.Show(subjectClass.ToString());
 
                 displayDaysClear();
                 displayDays();
@@ -54,6 +56,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void displayDays()
         {
+            //shows the day in the calendar
             var monday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + daysMultiplyer + (int)DayOfWeek.Monday);
             var tuesday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + daysMultiplyer + (int)DayOfWeek.Tuesday);
             var wednesday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + daysMultiplyer + (int)DayOfWeek.Wednesday);
@@ -105,6 +108,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void displayDaysClear()
         {
+            //the panels are cleared
             subjectContainerMonday.Controls.Clear();
             subjectContainerThuesday.Controls.Clear();
             subjectContainerWednesday.Controls.Clear();
@@ -114,6 +118,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_back_Click(object sender, EventArgs e)
         {
+            //leads you to the form main, depending on your role
             if (Login.userrole == "admin")
             {
                 Main_admin temp = new Main_admin();

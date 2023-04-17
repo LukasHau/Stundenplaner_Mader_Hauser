@@ -37,6 +37,7 @@ namespace Stundenplaner_Mader_Hauser
             }
         }
 
+        //Creates the combo boxes
         public List<ComboBox> cB = new List<ComboBox>();
 
         public void CreateCB(string day, int x1, int y1)
@@ -75,6 +76,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            //saves the schedule
             SubjectSQL.DeleteSchedule(ClassID);
             GetSubjectName("monday", 1);
             GetSubjectName("tuesday", 2);
@@ -87,6 +89,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void GetSubjectName(string day, int day_number)
         {
+            //gets the subject name
             foreach (Control c in Controls)
             {
                 for (int i = 1; i < 9; i++)
@@ -109,6 +112,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void CBonForm(string day_name, int x)
         {
+            //creates combo boxes
             int y = 94;
             for (int i = 1; i < 9; i++)
             {
@@ -120,11 +124,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(SubjectSQL.GetScheduleEdit(ClassID, 1, 1).ToString());
-            //int temp = SubjectSQL.GetScheduleEdit(ClassID, 1, 1);
-            //SubjectSQL.SelectSubjectFullname(temp);
-            //MessageBox.Show(SubjectSQL.NameSelectSubject);
-
+            //loads a schedule
             if (ClassID == -1)
             {
                 MessageBox.Show("Bitte wählen Sie eine Klasse aus!");
@@ -141,7 +141,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void FillSubjects(string day, int day_number)
         {
-
+            //fills the subject names
             foreach (Control c in Controls)
             {
                 for (int i = 1; i < 9; i++)

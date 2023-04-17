@@ -36,6 +36,7 @@ namespace Stundenplaner_Mader_Hauser
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            //on button click it will get saved
             Teacher.SaveDG();
             Student.SaveDG();
             SQLConnection.SaveDG();
