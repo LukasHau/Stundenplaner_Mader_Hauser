@@ -142,5 +142,10 @@ namespace Stundenplaner_Mader_Hauser
             //if you search something in the searchbar it shows in the datagrid
             (dG_subject.DataSource as DataTable).DefaultView.RowFilter = string.Format("name LIKE '{0}%'", tb_subjectSearchDatabase.Text);
         }
+
+        private void dG_subject_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

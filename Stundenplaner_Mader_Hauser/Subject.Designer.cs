@@ -64,6 +64,7 @@
             this.dG_subject.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dG_subject.Size = new System.Drawing.Size(298, 229);
             this.dG_subject.TabIndex = 58;
+            this.dG_subject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_subject_CellContentClick);
             // 
             // btn_subjectLoad
             // 

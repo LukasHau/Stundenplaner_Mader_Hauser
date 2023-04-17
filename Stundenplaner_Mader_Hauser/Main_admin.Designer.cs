@@ -37,6 +37,7 @@
             this.btn_classes = new System.Windows.Forms.Button();
             this.btn_subjects = new System.Windows.Forms.Button();
             this.btn_createTimetable = new System.Windows.Forms.Button();
+            this.btn_benutzer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +63,9 @@
             // 
             // btn_timetalbe
             // 
-            this.btn_timetalbe.Location = new System.Drawing.Point(12, 144);
+            this.btn_timetalbe.Location = new System.Drawing.Point(14, 144);
             this.btn_timetalbe.Name = "btn_timetalbe";
-            this.btn_timetalbe.Size = new System.Drawing.Size(105, 88);
+            this.btn_timetalbe.Size = new System.Drawing.Size(123, 56);
             this.btn_timetalbe.TabIndex = 2;
             this.btn_timetalbe.Text = "Stundenplan";
             this.btn_timetalbe.UseVisualStyleBackColor = true;
@@ -81,9 +82,9 @@
             // 
             // btn_student
             // 
-            this.btn_student.Location = new System.Drawing.Point(125, 144);
+            this.btn_student.Location = new System.Drawing.Point(143, 144);
             this.btn_student.Name = "btn_student";
-            this.btn_student.Size = new System.Drawing.Size(161, 41);
+            this.btn_student.Size = new System.Drawing.Size(143, 41);
             this.btn_student.TabIndex = 4;
             this.btn_student.Text = "Schüler";
             this.btn_student.UseVisualStyleBackColor = true;
@@ -91,9 +92,9 @@
             // 
             // btn_teacher
             // 
-            this.btn_teacher.Location = new System.Drawing.Point(125, 191);
+            this.btn_teacher.Location = new System.Drawing.Point(143, 191);
             this.btn_teacher.Name = "btn_teacher";
-            this.btn_teacher.Size = new System.Drawing.Size(161, 41);
+            this.btn_teacher.Size = new System.Drawing.Size(143, 41);
             this.btn_teacher.TabIndex = 5;
             this.btn_teacher.Text = "Lehrpersonen";
             this.btn_teacher.UseVisualStyleBackColor = true;
@@ -101,9 +102,9 @@
             // 
             // btn_classes
             // 
-            this.btn_classes.Location = new System.Drawing.Point(125, 238);
+            this.btn_classes.Location = new System.Drawing.Point(143, 238);
             this.btn_classes.Name = "btn_classes";
-            this.btn_classes.Size = new System.Drawing.Size(161, 41);
+            this.btn_classes.Size = new System.Drawing.Size(143, 41);
             this.btn_classes.TabIndex = 6;
             this.btn_classes.Text = "Klassen";
             this.btn_classes.UseVisualStyleBackColor = true;
@@ -111,9 +112,9 @@
             // 
             // btn_subjects
             // 
-            this.btn_subjects.Location = new System.Drawing.Point(125, 285);
+            this.btn_subjects.Location = new System.Drawing.Point(143, 285);
             this.btn_subjects.Name = "btn_subjects";
-            this.btn_subjects.Size = new System.Drawing.Size(161, 41);
+            this.btn_subjects.Size = new System.Drawing.Size(143, 41);
             this.btn_subjects.TabIndex = 7;
             this.btn_subjects.Text = "Fächer";
             this.btn_subjects.UseVisualStyleBackColor = true;
@@ -121,18 +122,30 @@
             // 
             // btn_createTimetable
             // 
-            this.btn_createTimetable.Location = new System.Drawing.Point(12, 238);
+            this.btn_createTimetable.Location = new System.Drawing.Point(12, 208);
             this.btn_createTimetable.Name = "btn_createTimetable";
-            this.btn_createTimetable.Size = new System.Drawing.Size(107, 88);
+            this.btn_createTimetable.Size = new System.Drawing.Size(125, 56);
             this.btn_createTimetable.TabIndex = 8;
             this.btn_createTimetable.Text = "Stundenplan erstellen/ändern";
             this.btn_createTimetable.UseVisualStyleBackColor = true;
+            this.btn_createTimetable.Click += new System.EventHandler(this.btn_createTimetable_Click);
+            // 
+            // btn_benutzer
+            // 
+            this.btn_benutzer.Location = new System.Drawing.Point(14, 270);
+            this.btn_benutzer.Name = "btn_benutzer";
+            this.btn_benutzer.Size = new System.Drawing.Size(123, 56);
+            this.btn_benutzer.TabIndex = 9;
+            this.btn_benutzer.Text = "Benutzerverwaltung";
+            this.btn_benutzer.UseVisualStyleBackColor = true;
+            this.btn_benutzer.Click += new System.EventHandler(this.button1_Click);
             // 
             // Main_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 367);
+            this.Controls.Add(this.btn_benutzer);
             this.Controls.Add(this.btn_createTimetable);
             this.Controls.Add(this.btn_subjects);
             this.Controls.Add(this.btn_classes);
@@ -162,5 +175,6 @@
         private Button btn_classes;
         private Button btn_subjects;
         private Button btn_createTimetable;
+        private Button btn_benutzer;
     }
 }

@@ -198,5 +198,10 @@ namespace Stundenplaner_Mader_Hauser
             }
             clear();
         }
+
+        private void dG_teacher_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
