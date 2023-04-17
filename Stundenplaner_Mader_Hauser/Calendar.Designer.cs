@@ -521,6 +521,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(624, 649);
             this.Controls.Add(this.btn_tableLoad);
             this.Controls.Add(this.subjectContainerFriday);
@@ -569,7 +570,9 @@
             this.Controls.Add(this.subjectContainerMonday);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.lbl_name);
+            this.MaximizeBox = false;
             this.Name = "Calendar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendar";
             this.Load += new System.EventHandler(this.Calendar_Load);
             this.ResumeLayout(false);

@@ -144,6 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(300, 367);
             this.Controls.Add(this.btn_benutzer);
             this.Controls.Add(this.btn_createTimetable);
@@ -155,7 +156,10 @@
             this.Controls.Add(this.btn_timetalbe);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
             this.Name = "Main_admin";
+            this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main_admin";
             this.Load += new System.EventHandler(this.Main_admin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

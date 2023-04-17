@@ -160,6 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(320, 433);
             this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.tb_classRoom);
@@ -173,7 +174,9 @@
             this.Controls.Add(this.cb_classAdd);
             this.Controls.Add(this.tb_className);
             this.Controls.Add(this.lbl_className);
+            this.MaximizeBox = false;
             this.Name = "Klasse";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klasse";
             this.Load += new System.EventHandler(this.Klasse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dG_class)).EndInit();
