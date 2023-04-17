@@ -259,6 +259,7 @@
             // 
             // Schueler
             // 
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(685, 364);
             this.Controls.Add(this.lbl_search);
             this.Controls.Add(this.cB_class);
@@ -282,7 +283,9 @@
             this.Controls.Add(this.lbl_studentAdress);
             this.Controls.Add(this.lbl_studentSurname);
             this.Controls.Add(this.lbl_studentName);
+            this.MaximizeBox = false;
             this.Name = "Schueler";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Schueler_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dG_student)).EndInit();
             this.ResumeLayout(false);

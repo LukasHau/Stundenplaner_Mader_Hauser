@@ -95,6 +95,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Stundenplaner_Mader_Hauser.Properties.Resources.MicrosoftTeams_image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -105,7 +107,9 @@
             this.Controls.Add(this.tB_login_password);
             this.Controls.Add(this.tB_login_name);
             this.DoubleBuffered = true;
+            this.MaximizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pB_Login)).EndInit();

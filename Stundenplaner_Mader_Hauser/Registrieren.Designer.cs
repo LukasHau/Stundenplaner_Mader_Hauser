@@ -116,6 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(379, 288);
             this.Controls.Add(this.btn_register);
             this.Controls.Add(this.btn_back);
@@ -125,7 +126,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "Registrieren";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrieren";
             this.Load += new System.EventHandler(this.Registrieren_Load);
             this.ResumeLayout(false);
