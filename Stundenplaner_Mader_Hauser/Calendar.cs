@@ -27,6 +27,21 @@ namespace Stundenplaner_Mader_Hauser
 
             lbl_name.Text = Login.username;
 
+            string userrole = SQLConnection.checkRole(Login.username);
+
+            if(userrole == "user")
+            {
+                cB_class.Enabled = false;
+
+                ClassID = SQLConnection.GetClassID(SQLConnection.GetIDLogin(Login.username));
+                subjectClass = ClassID;
+                MessageBox.Show(subjectClass.ToString());
+
+                displayDaysClear();
+                displayDays();
+
+            }
+
             //select class name
             foreach (int x in ClassSQL.LoadClassNamesID())
             {

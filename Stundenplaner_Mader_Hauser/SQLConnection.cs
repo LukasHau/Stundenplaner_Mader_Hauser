@@ -189,6 +189,34 @@ namespace Stundenplaner_Mader_Hauser
             return userRole;
         }
 
+        public static int GetIDLogin(string username)
+        {
+            int IDLogin;
+
+            con.Open();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = ("SELECT ID FROM swp5_login WHERE username = '" + username + "';");
+            IDLogin = (int)cmd.ExecuteScalar();
+            con.Close();
+
+            return IDLogin;
+        }
+
+
+
+        public static int GetClassID(int ID_login)
+        {
+            int ClassID;
+
+            con.Open();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = ("SELECT school_class FROM swp5_student WHERE ID_login = '" + ID_login + "';");
+            ClassID = (int)cmd.ExecuteScalar();
+            con.Close();
+
+            return ClassID;
+        }
+
         public static DataTable LoadDGuser()
         {
             //clears the DataTable
