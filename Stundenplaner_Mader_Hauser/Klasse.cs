@@ -30,8 +30,16 @@ namespace Stundenplaner_Mader_Hauser
             //if the checkbox is true a class gets added
             if (cb_classAdd.Checked)
             {
-                ClassSQL.CreateClass(tb_className.Text, tb_classRoom.Text);
-                clear();
+                if(tb_className.Text != "")
+                {
+                    ClassSQL.CreateClass(tb_className.Text, tb_classRoom.Text);
+                    clear();
+                }
+                else
+                {
+                    MessageBox.Show("Bitte füllen Sie den Namen aus!");
+                }
+                
             }
             else
             {
@@ -43,8 +51,11 @@ namespace Stundenplaner_Mader_Hauser
                     string cellValue = Convert.ToString(selectedtRow.Cells["ID"].Value);
 
                     classID = Convert.ToInt32(cellValue);
-
-                    ClassSQL.LoadClass(classID);
+                    try
+                    {
+                        ClassSQL.LoadClass(classID);
+                    }
+                    catch{ }
                     tb_className.Text = ClassSQL.ClassName;
                     tb_classRoom.Text = ClassSQL.ClassRoom;
                 }

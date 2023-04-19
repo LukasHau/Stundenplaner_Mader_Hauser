@@ -154,7 +154,7 @@ namespace Stundenplaner_Mader_Hauser
 
                         con.Open();
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = ("INSERT INTO swp5_login (username, password, role) VALUES ('" + username + "', '" + hashedpw + "', 'user');");
+                        cmd.CommandText = ("INSERT INTO swp5_login (username, password, role) VALUES ('" + username + "', '" + hashedpw + "', 'admin');");
                         cmd.ExecuteNonQuery();
                         con.Close();
 

@@ -38,8 +38,15 @@ namespace Stundenplaner_Mader_Hauser
            
             if (cb_subjectAdd.Checked)
             {
+                if (tb_SubjectName.Text != "")
+                {
                     SubjectSQL.CreateSubject(tb_SubjectName.Text, tb_SubjectFullname.Text, exam);
                     clear();
+                }
+                else
+                {
+                    MessageBox.Show("Bitte füllen Sie den Namen aus!");
+                }                
             }
             else
             {
